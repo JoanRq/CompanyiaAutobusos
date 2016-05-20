@@ -11,12 +11,16 @@ public class Linia {
 
   //normalizacion UML
   ArrayList<Parada> parades;
-  ArrayList<Veterans> veterans;
+  ArrayList<Vetera> veterans;
   ArrayList<Practiques> practiques;
   ArrayList<Bus>  autobusos;
 
 
   public Linia(){
 
+  }
+
+  public Linia(int numLinina) {
+    this.numLinina = numLinina;
   }
 }

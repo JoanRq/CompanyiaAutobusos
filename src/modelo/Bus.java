@@ -12,7 +12,7 @@ public class Bus {
 
   // Resultat normalitzacio
   private Linia linea;
-  private ArrayList<Torn> jornadess;
+  private ArrayList<BusTorn> busTorns;
 
   // Metodes
   public Bus(String matricula, int numPlaces, Linia linea) throws Exception {
@@ -22,16 +22,16 @@ public class Bus {
     this.matricula = matricula;
     this.numPlaces = numPlaces;
     this.linea = linea;
-    jornadess = new ArrayList<>();
+    busTorns = new ArrayList<>();
 
   }
-
-  public void addTorn(Torn jornada) throws Exception {
+/*
+  public void addBusTorn(Torn jornada) throws Exception {
     if (jornada == null) {
       throw new Exception();
     }
-    jornadess.add(jornada);
+    busTorns.add(jornada);
   }
-
+*/
 
 }
