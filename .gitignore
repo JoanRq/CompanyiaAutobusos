@@ -1,8 +1,8 @@
 # descartp *.class, *.iml .idea i out/
 *.class
 out/
+.idea/
 *.iml
-.idea
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

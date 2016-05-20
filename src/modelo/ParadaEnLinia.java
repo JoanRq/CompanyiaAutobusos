@@ -17,7 +17,7 @@ public class ParadaEnLinia {
   private ArrayList<Parada> parades;
 
 
-  public ParadaEnLinia(){
+  public ParadaEnLinia() {
 
   }
 }

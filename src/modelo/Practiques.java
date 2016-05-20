@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Practiques extends Conductor {
 
-// segons la normalitzacio UML
+  // segons la normalitzacio UML
   private ArrayList<Linia> lineaAssignada;
 
   public Practiques(String dni, String nom) {

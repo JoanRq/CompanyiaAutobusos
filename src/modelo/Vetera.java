@@ -9,7 +9,7 @@ public class Vetera extends Conductor {
 
   public Vetera(String dni, String nom, Linia lineaVetada) {
     super(dni, nom);
-    this.lineaVetada=lineaVetada;
+    this.lineaVetada = lineaVetada;
 
   }
 }

@@ -6,5 +6,4 @@ package modelo;
 public class Nocturn extends Torn {
 
 
-
 }

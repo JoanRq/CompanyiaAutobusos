@@ -15,7 +15,7 @@ public class Conductor {
     this.dni = dni;
     this.nom = nom;
 
-    busTorn= new ArrayList<>();
+    busTorn = new ArrayList<>();
   }
 
   public String getNom() {

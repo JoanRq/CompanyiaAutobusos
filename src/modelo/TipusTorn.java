@@ -12,6 +12,6 @@ public class TipusTorn {
     busTorns = new ArrayList<>();
   }
 
-  public enum Torns {MATI,TARDA,NIT}
+  public enum Torns {MATI, TARDA, NIT}
 
 }

@@ -11,7 +11,7 @@ public class Parada {
   // Normalitzacio model
   private ArrayList<Linia> linies;
 
-  public Parada(){
+  public Parada() {
 
   }
 }

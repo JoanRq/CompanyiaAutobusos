@@ -13,10 +13,10 @@ public class Linia {
   ArrayList<Parada> parades;
   ArrayList<Vetera> veterans;
   ArrayList<Practiques> practiques;
-  ArrayList<Bus>  autobusos;
+  ArrayList<Bus> autobusos;
 
 
-  public Linia(){
+  public Linia() {
 
   }
 
