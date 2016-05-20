@@ -22,5 +22,15 @@ public class Linia {
 
   public Linia(int numLinina) {
     this.numLinina = numLinina;
+
+    autobusos  = new ArrayList<>();
+    practiques = new ArrayList<>();
+    veterans   = new ArrayList<>();
+    autobusos  = new ArrayList<>();
+
+  }
+
+  public int getNumLinea() {
+    return  numLinina ;
   }
 }

@@ -11,7 +11,17 @@ public class Parada {
   // Normalitzacio model
   private ArrayList<Linia> linies;
 
-  public Parada() {
+  public Parada(String nomParada) {
+    this.nomParada=nomParada;
+
+    linies = new ArrayList<>();
 
   }
+
+  public void addLiniesDeLaParada(Linia linia){
+
+
+  }
+
+
 }

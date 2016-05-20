@@ -13,7 +13,7 @@ public class ParadaEnLinia {
   private Parada paradaAnterior;
   private Parada paradaPosterior;
 
-  private ArrayList<Linia> linies;
+  private ArrayList<Linia>  linies;
   private ArrayList<Parada> parades;
 
 
