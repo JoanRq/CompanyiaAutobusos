@@ -27,6 +27,19 @@ public class Vista {
         int var3 = Integer.parseInt(this.entrada.nextLine().trim());
         this.gestioBus.addParada(var2, var3);
 
+        int var4 = -1;
+        while (var4!=0) {
+          try {
+            System.out.print("Introduiu un altre numero de línea (0 per finalitzar) : ");
+            var4 = Integer.parseInt(this.entrada.nextLine().trim());
+            //this.gestioBus.addLiniaDeParada(var2, var4);
+
+          } catch (Exception error){
+            System.err.println("Paràmetres incorrectes");
+          }
+
+        }
+
 
         var1 = false;
       } catch (Exception error ) {
