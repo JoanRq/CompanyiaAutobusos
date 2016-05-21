@@ -16,10 +16,6 @@ public class Linia {
   ArrayList<Bus> autobusos;
 
 
-  public Linia() {
-
-  }
-
   public Linia(int numLinina) {
     this.numLinina = numLinina;
 

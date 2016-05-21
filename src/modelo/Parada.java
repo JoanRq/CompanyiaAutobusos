@@ -44,5 +44,4 @@ public class Parada {
   public boolean esParadaDeLinea(Linia liniaEnQuestio ) {
     return false;
   }
-
 }

@@ -19,9 +19,15 @@ public class Vista {
     boolean var1 = true;
     while (var1) {
       try {
-        System.out.print("Introduïu una Parada nova : ");
-        int var2 = Integer.parseInt(this.entrada.nextLine());
-        this.gestioBus.addLinia(var2);
+
+        System.out.print("Introduïu un nom de Parada nou            : ");
+        String var2 = this.entrada.nextLine().trim();
+
+        System.out.print("Introduïu un numero de Linea de la Parada : ");
+        int var3 = Integer.parseInt(this.entrada.nextLine().trim());
+        this.gestioBus.addParada(var2, var3);
+
+
         var1 = false;
       } catch (Exception error ) {
         System.err.println("Paràmetres incorrectes");
