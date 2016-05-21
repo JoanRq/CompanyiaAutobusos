@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by poo2 on 17/05/2016.
@@ -9,16 +9,21 @@ public class Parada {
   private String nomParada;
 
   // Normalitzacio model
-  private ArrayList<Linia> linies;
+  /***
+   * linies hauria de ser un HashMap per evitar duplicitats... o evitarles
+   */
 
-  public Parada(String nomParada) {
+  private HashMap<Integer, Linia> linies;
+
+  public Parada(String nomParada,int... numLiniesParada) {
     this.nomParada=nomParada;
 
-    linies = new ArrayList<>();
+    linies = new = new HashMap();
 
   }
 
-  public void addLiniesDeLaParada(Linia linia){
+  public void addLiniesParada(Linia... liniesParada){
+
 
 
   }

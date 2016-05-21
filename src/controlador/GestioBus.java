@@ -33,4 +33,8 @@ public class GestioBus {
     }
     throw new Exception();
   }
+
+  public void addLiniesParada(){
+
+  }
 }
