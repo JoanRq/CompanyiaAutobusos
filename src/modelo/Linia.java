@@ -30,11 +30,15 @@ public class Linia {
 
   }
 
+
   public int getNumLinea() {
     return  numLinina ;
   }
 
+/*
   public Linia getLinina(int numLinea) {
     return this.get();
   }
+*/
+
 }

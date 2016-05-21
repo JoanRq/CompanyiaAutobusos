@@ -15,6 +15,20 @@ public class Vista {
     this.entrada = new Scanner(System.in);
   }
 
+  public void altaParadesd() {
+    boolean var1 = true;
+    while (var1) {
+      try {
+        System.out.print("Introduïu una Parada nova : ");
+        int var2 = Integer.parseInt(this.entrada.nextLine());
+        this.gestioBus.addLinia(var2);
+        var1 = false;
+      } catch (Exception error ) {
+        System.err.println("Paràmetres incorrectes");
+      }
+    }
+  }
+
   public void altaLinies() {
     boolean var1 = true;
     while (var1) {
@@ -51,6 +65,7 @@ public class Vista {
         System.out.println();
         System.out.println("1. Alta Conductors");
         System.out.println("2. Alta de Linies");
+        System.out.println("3. Alta de Parades");
         System.out.println("0. Salir");
         System.out.println();
         System.out.print("Introduce una opcion: ");
@@ -60,6 +75,9 @@ public class Vista {
             this.pedirConductor();
             break;
           case 2:
+            this.altaLinies();
+            break;
+          case 3:
             this.altaLinies();
             break;
 

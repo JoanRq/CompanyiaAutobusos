@@ -26,15 +26,17 @@ public class GestioBus {
  *  (A null return can also indicate that the map previously associated null with key.)
  */
     try {
+      if ()
       this.numLinines.put(numLinina, new Linia(numLinina)).getNumLinea();
-     //int var = this.numLinines.put(numLinina, new Linia(numLinina)).getNumLinea();
-    } catch (Exception NullPointerException ) {
+    } catch (Exception NullPointerException) {
+      System.out.println("error capturat");
       return;
     }
     throw new Exception();
   }
 
-  public void addLiniesParada(){
+  public void addParada(){
 
   }
+
 }
