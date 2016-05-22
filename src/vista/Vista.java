@@ -15,37 +15,62 @@ public class Vista {
     this.entrada = new Scanner(System.in);
   }
 
-  public void altaParadesd() {
+  public void altaParada() {
     boolean var1 = true;
     while (var1) {
       try {
-
-        System.out.print("Introduïu un nom de Parada nou            : ");
+        System.out.print("Introduïu un nom de Parada nova           : ");
         String var2 = this.entrada.nextLine().trim();
 
         System.out.print("Introduïu un numero de Linea de la Parada : ");
         int var3 = Integer.parseInt(this.entrada.nextLine().trim());
         this.gestioBus.addParada(var2, var3);
 
-        int var4 = -1;
-        while (var4!=0) {
+        int var6 = -1;
+        while (var6!=0) {
           try {
             System.out.print("Introduiu un altre numero de línea (0 per finalitzar) : ");
-            var4 = Integer.parseInt(this.entrada.nextLine().trim());
-            //this.gestioBus.addLiniaDeParada(var2, var4);
-
-          } catch (Exception error){
-            System.err.println("Paràmetres incorrectes");
+            if ((var6 = Integer.parseInt(this.entrada.nextLine().trim()))>0) {
+              this.gestioBus.addLiniaDeParada(var2, var6);
+            }
+          } catch (NumberFormatException error) {
+            var6=0;
           }
-
         }
-
 
         var1 = false;
       } catch (Exception error ) {
         System.err.println("Paràmetres incorrectes");
       }
     }
+  }
+
+
+  public void altaParadaEnLinea() {
+
+    boolean var1 = true;
+    while (var1) {
+      try {
+        System.out.print("Introduïu un nom de Parada nou            : ");
+        String var2 = this.entrada.nextLine().trim();
+
+        System.out.print("Introduïu un numero de Linea de la Parada : ");
+        int var3 = Integer.parseInt(this.entrada.nextLine().trim());
+
+        System.out.print("Introduïu la Parada Anterior              : ");
+        String var4 = this.entrada.nextLine().trim();
+
+        System.out.print("Introduïu la Parada Posterior             : ");
+        String var5 = this.entrada.nextLine().trim();
+
+        this.gestioBus.addParadaEnLinea(var2, var3,var4,var5);
+
+        var1 = false;
+      } catch (Exception error ) {
+        System.err.println("Paràmetres incorrectes");
+      }
+    }
+
   }
 
   public void altaLinies() {
@@ -77,6 +102,40 @@ public class Vista {
       }
     }
   }
+  public void altaCondVetera() {
+    boolean var1 = true;
+    while (var1) {
+      try {
+        System.out.print("\nIntroduïu el nom del Conductor  : ");
+        String var2 = this.entrada.nextLine();
+        System.out.print("Introduïu DNI                   : ");
+        String var3 = this.entrada.nextLine();
+        System.out.print("Introduïu numero de Linia Vetada: ");
+        int var4 = Integer.parseInt(this.entrada.nextLine());
+
+        this.gestioBus.addCondVetera(var2, var3, var4);
+        var1 = false;
+      } catch (Exception var5) {
+        System.err.println("Los parametros no son correctos");
+      }
+    }
+  }
+  public void altaCondAprenent() {
+    boolean var1 = true;
+    while (var1) {
+      try {
+        System.out.print("\nIntroduïu el nom del Conductor  : ");
+        String var2 = this.entrada.nextLine();
+        System.out.print("Introduïu DNI                   : ");
+        String var3 = this.entrada.nextLine();
+
+        this.gestioBus.addCondAprenent(var2, var3);
+        var1 = false;
+      } catch (Exception var5) {
+        System.err.println("Los parametros no son correctos");
+      }
+    }
+  }
 
   public void Menu() {
     while (true) {
@@ -84,7 +143,10 @@ public class Vista {
         System.out.println();
         System.out.println("1. Alta Conductors");
         System.out.println("2. Alta de Linies");
-        System.out.println("3. Alta de Parades");
+        System.out.println("3. Alta de Parades (cal una linea com a minim)/ afegir linies a parada");
+        System.out.println("4. Alta de ParadaEnLinea");
+        System.out.println("10. Alta Conductor Vetera");
+        System.out.println("10. Alta Conductors Aprenent");
         System.out.println("0. Salir");
         System.out.println();
         System.out.print("Introduce una opcion: ");
@@ -97,7 +159,16 @@ public class Vista {
             this.altaLinies();
             break;
           case 3:
-            this.altaLinies();
+            this.altaParada();
+            break;
+          case 4:
+            this.altaParadaEnLinea();
+            break;
+          case 10:
+            this.altaCondVetera();
+            break;
+          case 20:
+            this.altaCondAprenent();
             break;
 
           case 0:
