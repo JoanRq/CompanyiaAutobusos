@@ -11,7 +11,11 @@ public class Conductor {
 
   private ArrayList<BusTorn> busTorn;
 
-  public Conductor(String dni, String nom) {
+  public Conductor(String dni, String nom) throws Exception {
+    if (dni == null || nom == null) {
+      throw new Exception();
+    }
+
     this.dni = dni;
     this.nom = nom;
 

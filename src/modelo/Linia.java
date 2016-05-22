@@ -12,7 +12,7 @@ public class Linia {
   //normalizacion UML
   ArrayList<Parada> parades;
   ArrayList<Vetera> veterans;
-  ArrayList<Practiques> practiques;
+  ArrayList<Aprenent> practiques;
   ArrayList<Bus> autobusos;
 
 
@@ -27,7 +27,7 @@ public class Linia {
   }
 
 
-  public int getNumLinea() {
+  public int getNumLinia() {
     return  numLinina ;
   }
 
