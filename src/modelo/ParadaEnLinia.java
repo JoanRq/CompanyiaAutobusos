@@ -1,76 +1,38 @@
 package modelo;
 
-import modelo.Parada;
-import modelo.Linia;
-
-
-import java.util.HashMap;
-
 /**
  * Created by poo2 on 17/05/2016.
  */
 public class ParadaEnLinia {
 
-  // Normalitzacio model
-
+  private Linia linia;
   private Parada parada;
-  private Parada paradaAnterior;
-  private Parada paradaPosterior;
+  private ParadaEnLinia anterior;
+  private ParadaEnLinia posterior;
 
-  private HashMap<Integer, Linia> liniesParada ;
-  private HashMap<String, Parada> llistaParadesEnLinia ;
-  /***
-   * Abans d'afegir nomParada a l'array de parades
-   * caldrà mirar si paradaAnetrior i paradaPosterior són de la linia
-   *
-   * @param parada
-   * @param lParada
-   * @param pAnterior
-   * @param pPosterior
-   */
-
-  public ParadaEnLinia(Parada parada,Linia lParada, Parada pAnterior, Parada pPosterior)
-      throws Exception {
-
-    if (parada == null || lParada == null) {
-      throw new Exception();
-    }
-    if ( pAnterior == null && pPosterior == null ) {
+  public ParadaEnLinia(Linia linia, Parada parada) throws Exception {
+    if (parada == null || linia == null) {
       throw new Exception();
     }
 
-    if ( !( pAnterior.esParadaDeLinea(lParada) || pPosterior.esParadaDeLinea(lParada) ) ) {
-      throw new Exception();
-    }
-
+    this.linia= linia;
     this.parada= parada;
-    this.paradaAnterior= pAnterior;
-    this.paradaPosterior= pPosterior;
-
-    this.llistaParadesEnLinia= new HashMap();
-    this.llistaParadesEnLinia.put(parada.getNomParada(),parada);
-
-    this.liniesParada= new HashMap();
-    this.liniesParada.put(lParada.getNumLinia(),lParada);
 
   }
 
+  public void setAnterior(ParadaEnLinia anterior) throws Exception {
+    if (anterior == null || anterior.linia != this.linia || anterior == this) {
+      throw new Exception();
+    }
 
-  @Override
-  public String toString() {
-    String strTmp ="{";
-    for (int i : this.liniesParada.keySet() )
-      strTmp +=i+"},{";
-    strTmp = strTmp.substring(0, strTmp.length()-2);
-
-    return "ParadaEnLinea{" +
-        "nomParada='" + this.parada.getNomParada() + '\'' +
-        ", liniesParada=" + strTmp +
-        '}';
+    this.anterior = anterior;
   }
 
+  public void setPosterior(ParadaEnLinia posterior) throws Exception {
+    if (posterior == null || posterior.linia != this.linia || posterior == this) {
+      throw new Exception();
+    }
 
-
-
-
+    this.posterior = posterior;
+  }
 }

@@ -1,2 +1,2 @@
 # CompanyiaAutobusos
-Esta soncronitzant?
+Esta soncronitzant

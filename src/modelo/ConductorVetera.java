@@ -1,20 +1,22 @@
 package modelo;
 
-import java.util.ArrayList;
-
 /**
  * Created by poo2 on 17/05/2016.
  */
 public class ConductorVetera extends Conductor {
-  private Linia lineaVetada;
 
-  // segons la normalitzacio UML
-  private ArrayList<Linia> lineaAssignada;
+  private Linia noLinia;
 
-  public ConductorVetera(String dni, String nom, Linia lineaVetada) throws Exception {
+  public ConductorVetera(String dni, String nom) throws Exception {
     super(dni, nom);
 
-    this.lineaVetada = lineaVetada;
+  }
 
+  public void setNoLinea(Linia noLinia) throws Exception {
+    if (noLinia == null) {
+      throw new Exception();
+    }
+
+    this.noLinia = noLinia;
   }
 }

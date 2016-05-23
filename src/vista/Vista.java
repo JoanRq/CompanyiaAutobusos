@@ -18,29 +18,20 @@ public class Vista {
   public void altaParada() {
     boolean var1 = true;
     while (var1) {
-      try {
-        System.out.print("Introduïu un nom de Parada nova           : ");
-        String var2 = this.entrada.nextLine().trim();
+      System.out.println("Parada: "+this.gestioBus.llistaParades.keySet());
 
-        System.out.print("Introduïu un numero de Linea de la Parada : ");
-        int var3 = Integer.parseInt(this.entrada.nextLine().trim());
-        this.gestioBus.addParada(var2, var3);
-
-        int var6 = -1;
-        while (var6!=0) {
-          try {
-            System.out.print("Introduiu un altre numero de línea (0 per finalitzar) : ");
-            if ((var6 = Integer.parseInt(this.entrada.nextLine().trim()))>0) {
-              this.gestioBus.addLiniaDeParada(var2, var6);
-            }
-          } catch (NumberFormatException error) {
-            var6=0;
-          }
+      System.out.print("Nom de Parada (INTRO per sortir) : ");
+      String var2 = this.entrada.nextLine().trim();
+      if (var2.length()==0){
+        var1=false;
+      }
+      else {
+        try {
+          this.gestioBus.addParada(var2);
         }
-
-        var1 = false;
-      } catch (Exception error ) {
-        System.err.println("Paràmetres incorrectes");
+        catch (Exception error ) {
+          System.err.println("Paràmetres incorrectes");
+        }
       }
     }
   }
@@ -50,39 +41,41 @@ public class Vista {
 
     boolean var1 = true;
     while (var1) {
+      System.out.println("ParadaEnLinea: "+this.gestioBus.llistaParadesEnLinea.keySet());
+
+      System.out.print("Introduïu ParadaEnLinea (INTRO per sortir)    : ");
+      String var2 = this.entrada.nextLine().trim();
+
+      System.out.print("Introduïu Linea deParadaEnLinea (0 per SORTIR : ");
+      int var3 = Integer.parseInt("0"+this.entrada.nextLine().trim());
+
+      if (var2.length()==0 || var3 == 0){
+        var1=false;
+      }
       try {
-        System.out.print("Introduïu un nom de Parada nou            : ");
-        String var2 = this.entrada.nextLine().trim();
+        this.gestioBus.addParadaEnLinea(var2, var3);
 
-        System.out.print("Introduïu un numero de Linea de la Parada : ");
-        int var3 = Integer.parseInt(this.entrada.nextLine().trim());
-
-        System.out.print("Introduïu la Parada Anterior              : ");
-        String var4 = this.entrada.nextLine().trim();
-
-        System.out.print("Introduïu la Parada Posterior             : ");
-        String var5 = this.entrada.nextLine().trim();
-
-        this.gestioBus.addParadaEnLinea(var2, var3,var4,var5);
-
-        var1 = false;
       } catch (Exception error ) {
         System.err.println("Paràmetres incorrectes");
       }
     }
-
   }
 
   public void altaLinies() {
     boolean var1 = true;
     while (var1) {
-      try {
-        System.out.print("Introduïu numero de Linia : ");
-        int var2 = Integer.parseInt(this.entrada.nextLine());
-        this.gestioBus.addLinia(var2);
+      System.out.println("Linia: "+this.gestioBus.numLinines.keySet());
+      System.out.print("Introduïu numero de Linia (0 per Sortir : ");
+      int var2 = Integer.parseInt("0"+this.entrada.nextLine().trim());
+      if (var2==0 ) {
         var1 = false;
-      } catch (Exception error ) {
-        System.err.println("Paràmetres incorrectes");
+      }
+      else {
+        try {
+          this.gestioBus.addLinia(var2);
+        } catch (Exception error ) {
+          System.err.println("Paràmetres incorrectes");
+        }
       }
     }
   }
@@ -90,15 +83,20 @@ public class Vista {
   public void pedirConductor() {
     boolean var1 = true;
     while (var1) {
-      try {
-        System.out.print("\nIntroduce un nombre del Conductor: ");
-        String var2 = this.entrada.nextLine();
-        System.out.print("Introduce su DNI: ");
-        String var3 = this.entrada.nextLine();
-        this.gestioBus.addConductor(var2, var3);
+      System.out.println("\nLinia: " + this.gestioBus.conductors.keySet());
+      System.out.print("Introduce un nombre del Conductor (Intro per sortir) : ");
+      String var2 = this.entrada.nextLine();
+      System.out.print("Introduce su DNI                  (Intro per sortir) : ");
+      String var3 = this.entrada.nextLine();
+      if(var2.length() == 0 || var3.length() == 0 ) {
         var1 = false;
-      } catch (Exception var5) {
-        System.err.println("Los parametros no son correctos");
+      }
+      else {
+        try {
+          this.gestioBus.addConductor(var3, var2);
+        } catch (Exception var5) {
+          System.err.println("Los parametros no son correctos");
+        }
       }
     }
   }
@@ -142,8 +140,8 @@ public class Vista {
       try {
         System.out.println();
         System.out.println("1. Alta Conductors");
-        System.out.println("2. Alta de Linies");
-        System.out.println("3. Alta de Parades (cal una linea com a minim)/ afegir linies a parada");
+        System.out.println("2. Creació Linies");
+        System.out.println("3. Creació de Parades (sense afegir ParadeEnLinea");
         System.out.println("4. Alta de ParadaEnLinea");
         System.out.println("10. Alta Conductor ConductorVetera");
         System.out.println("20. Alta Conductors ConductorAprenent");

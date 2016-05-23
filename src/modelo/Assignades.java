@@ -10,11 +10,13 @@ public class Assignades {
   private Linia lineas;
 
   public Assignades(float horas, ConductorAprenent conductorAprenent,
-                   Linia linea) throws Exception {
+      Linia linea) throws Exception {
+
     if ( conductorAprenent == null || linea == null){
       throw new NullPointerException();
     }
-    if (horas <= 100){
+
+    if (horas <= 100) {
       throw new Exception();
     }
     this.hores = horas;

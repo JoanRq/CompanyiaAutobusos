@@ -6,35 +6,21 @@ import java.util.ArrayList;
  * Created by poo2 on 17/05/2016.
  */
 public class Linia {
+  // Atributs
   private int numLinina;
 
-
   //normalizacion UML
-  ArrayList<Parada> parades;
-  ArrayList<ConductorVetera> veterans;
-  ArrayList<ConductorAprenent> practiques;
-  ArrayList<Bus> autobusos;
-
+  private ArrayList<Assignades> assignacions;
+  private ArrayList<ConductorVetera> conductorsVeterans;
+  private ArrayList<Autobus> autobusos;
+  private ArrayList<ParadaEnLinia> parades;
 
   public Linia(int numLinina) {
     this.numLinina = numLinina;
 
-    autobusos  = new ArrayList<>();
-    practiques = new ArrayList<>();
-    veterans   = new ArrayList<>();
-    autobusos  = new ArrayList<>();
-
+    assignacions = new ArrayList<>();
+    conductorsVeterans = new ArrayList<>();
+    autobusos = new ArrayList<>();
+    parades = new ArrayList<>();
   }
-
-
-  public int getNumLinia() {
-    return  numLinina ;
-  }
-
-/*
-  public Linia getLinina(int numLinea) {
-    return this.get();
-  }
-*/
-
 }
