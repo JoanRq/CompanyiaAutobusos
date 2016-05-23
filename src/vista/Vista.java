@@ -145,8 +145,8 @@ public class Vista {
         System.out.println("2. Alta de Linies");
         System.out.println("3. Alta de Parades (cal una linea com a minim)/ afegir linies a parada");
         System.out.println("4. Alta de ParadaEnLinea");
-        System.out.println("10. Alta Conductor Vetera");
-        System.out.println("20. Alta Conductors Aprenent");
+        System.out.println("10. Alta Conductor ConductorVetera");
+        System.out.println("20. Alta Conductors ConductorAprenent");
         System.out.println("0. Salir");
         System.out.println();
         System.out.print("Introduce una opcion: ");

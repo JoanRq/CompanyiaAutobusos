@@ -10,8 +10,8 @@ import java.util.HashMap;
 public class GestioBus {
 
   private HashMap<String, Conductor> conductors               = new HashMap();
-  private HashMap<String, Vetera> conductorsVeterans               = new HashMap();
-  private HashMap<String, Aprenent> conductorsAprenents               = new HashMap();
+  private HashMap<String, ConductorVetera> conductorsVeterans               = new HashMap();
+  private HashMap<String, ConductorAprenent> conductorsAprenents               = new HashMap();
   private HashMap<Integer, Linia> numLinines                  = new HashMap();
   private HashMap<String, ParadaEnLinia>llistaParadesEnLinea  = new HashMap();
   private HashMap<String, Parada>llistaParades                = new HashMap();
@@ -23,11 +23,11 @@ public class GestioBus {
 
   public void addCondVetera(String dni, String nombre, int LiniaVetada) throws Exception {
     Linia lVetada = this.numLinines.get(LiniaVetada);
-    this.conductorsVeterans.put(dni, new Vetera(dni, nombre, lVetada));
+    this.conductorsVeterans.put(dni, new ConductorVetera(dni, nombre, lVetada));
   }
 
   public void addCondAprenent(String dni, String nombre) throws Exception {
-    this.conductorsAprenents.put(dni, new Aprenent(dni, nombre));
+    this.conductorsAprenents.put(dni, new ConductorAprenent(dni, nombre));
   }
 
   public void addLinia(int numLinina) throws Exception {

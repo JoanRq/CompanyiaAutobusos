@@ -11,8 +11,8 @@ public class Linia {
 
   //normalizacion UML
   ArrayList<Parada> parades;
-  ArrayList<Vetera> veterans;
-  ArrayList<Aprenent> practiques;
+  ArrayList<ConductorVetera> veterans;
+  ArrayList<ConductorAprenent> practiques;
   ArrayList<Bus> autobusos;
 
 
