@@ -15,7 +15,7 @@ public class TornNit extends Torn {
 
 
   public TornNit(Conductor conductor, LocalDate fecha,
-                    TipusTorn tipoTurno, AutoBus bus) throws Exception{
+                    TipusTorn tipoTurno, Autobus bus) throws Exception{
     super (conductor, fecha, tipoTurno, bus );
 
     if (tipoTurno != TipusTorn.NIT) {

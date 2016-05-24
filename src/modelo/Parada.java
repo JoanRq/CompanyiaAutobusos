@@ -14,11 +14,11 @@ public class Parada {
     this.paradesLinies = new ArrayList();
   }
 
-  public void addParada(ParadaEnLinia posParada)
-      throws Exception {
+  public void addParada(ParadaEnLinia posParada) throws Exception {
     if (posParada == null) {
       throw new Exception();
     }
+
     paradesLinies.add(posParada);
   }
 
