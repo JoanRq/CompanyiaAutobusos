@@ -1,5 +1,6 @@
 package vista;
 
+
 import controlador.GestioBus;
 
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class Vista {
   private Scanner entrada;
 
   public Vista() {
+
     this.entrada = new Scanner(System.in);
   }
 
@@ -148,7 +150,10 @@ public class Vista {
         System.out.println("0. Salir");
         System.out.println();
         System.out.print("Introduce una opcion: ");
+
+        //int var1 = Integer.parseInt(this.entrada.nextLine());
         int var1 = Integer.parseInt(this.entrada.nextLine());
+
         switch (var1) {
           case 1:
             this.pedirConductor();
@@ -185,4 +190,5 @@ public class Vista {
     Vista vis = new Vista();
     vis.Menu();
   }
+
 }
