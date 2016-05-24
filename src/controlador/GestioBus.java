@@ -3,7 +3,6 @@ package controlador;
 import modelo.*;
 
 import java.util.HashMap;
-import java.util.zip.CheckedInputStream;
 
 /**
  * Created by poo2 on 17/05/2016.
@@ -16,7 +15,21 @@ public class GestioBus {
   public HashMap<Integer, Linia> numLinines                     = new HashMap();
   public HashMap<String, ParadaEnLinia>llistaParadesEnLinea     = new HashMap();
   public HashMap<String, Parada>llistaParades                   = new HashMap();
+  public HashMap<String, Autobus>llistaautobusos                = new HashMap();
 
+
+  public void addAutoBus(String matricula, int places, int numLinia)
+      throws Exception {
+    Linia linia = this.numLinines.get(numLinia);
+    if (linia == null ){
+      throw new Exception();
+    }
+    Autobus b1 = this.llistaautobusos.get(matricula);
+    if (b1 != null ) {
+      throw new Exception();
+    }
+    this.llistaautobusos.put(matricula, new Autobus(matricula,places,linia));
+  }
 
   public void addConductor(String dni, String nombre) throws Exception {
     Conductor resultat = this.conductors.putIfAbsent(dni, new Conductor(dni, nombre));

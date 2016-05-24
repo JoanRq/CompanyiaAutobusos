@@ -18,7 +18,7 @@ public class Linia {
   public Linia(int numLinina) {
     this.numLinina = numLinina;
 
-    assignacions = new ArrayList<>();
+    //assignacions = new ArrayList<>();
     conductorsVeterans = new ArrayList<>();
     autobusos = new ArrayList<>();
     parades = new ArrayList<>();
