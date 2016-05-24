@@ -4,6 +4,7 @@ import modelo.*;
 
 import java.util.HashMap;
 
+
 /**
  * Created by poo2 on 17/05/2016.
  */
@@ -34,9 +35,8 @@ public class Controlador {
   public void addConductor(String dni, String nombre) throws Exception {
     Conductor resultat = this.conductors.putIfAbsent(dni, new Conductor(dni, nombre));
     if (resultat!=null){
-      System.out.println("Conductor DUPLICAT!!!");
+      throw new Exception(); //System.out.println("Conductor DUPLICAT!!!");
     }
-
   }
 
   public void addCondVetera(String dni, String nombre, int LiniaVetada) throws Exception {
