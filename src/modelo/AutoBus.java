@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by poo2 on 17/05/2016.
  */
-public class Autobus {
+public class AutoBus {
   // Atributs
   private String matricula;
   private int places;
@@ -14,7 +14,7 @@ public class Autobus {
   private Linia linia;
   private ArrayList<Torn> busTorns;
 
-  public Autobus(String matricula, int places, Linia linia) throws Exception {
+  public AutoBus(String matricula, int places, Linia linia) throws Exception {
     if (matricula == null || linia == null || places < 0) {
       throw new Exception();
     }

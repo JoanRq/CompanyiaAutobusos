@@ -11,10 +11,10 @@ public class Torn {
   private Conductor conductor;
   private LocalDate data;
   private TipusTorn tipusTorn;
-  private Autobus bus;
+  private AutoBus bus;
 
   // Constructor
-  public Torn(Conductor conductor, LocalDate data, TipusTorn tipusTorn, Autobus bus)
+  public Torn(Conductor conductor, LocalDate data, TipusTorn tipusTorn, AutoBus bus)
       throws Exception {
     if (conductor == null || data == null || tipusTorn == null || bus  == null) {
       throw new Exception();

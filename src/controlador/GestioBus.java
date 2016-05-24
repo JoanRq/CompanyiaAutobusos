@@ -15,7 +15,7 @@ public class GestioBus {
   public HashMap<Integer, Linia> numLinines                     = new HashMap();
   public HashMap<String, ParadaEnLinia>llistaParadesEnLinea     = new HashMap();
   public HashMap<String, Parada>llistaParades                   = new HashMap();
-  public HashMap<String, Autobus>llistaautobusos                = new HashMap();
+  public HashMap<String, AutoBus>llistaautobusos                = new HashMap();
 
 
   public void addAutoBus(String matricula, int places, int numLinia)
@@ -24,11 +24,11 @@ public class GestioBus {
     if (linia == null ){
       throw new Exception();
     }
-    Autobus b1 = this.llistaautobusos.get(matricula);
+    AutoBus b1 = this.llistaautobusos.get(matricula);
     if (b1 != null ) {
       throw new Exception();
     }
-    this.llistaautobusos.put(matricula, new Autobus(matricula,places,linia));
+    this.llistaautobusos.put(matricula, new AutoBus(matricula,places,linia));
   }
 
   public void addConductor(String dni, String nombre) throws Exception {

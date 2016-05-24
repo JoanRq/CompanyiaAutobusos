@@ -12,7 +12,7 @@ public class Linia {
   //normalizacion UML
   private ArrayList<Assignades> assignacions;
   private ArrayList<ConductorVetera> conductorsVeterans;
-  private ArrayList<Autobus> autobusos;
+  private ArrayList<AutoBus> autobusos;
   private ArrayList<ParadaEnLinia> parades;
 
   public Linia(int numLinina) {
