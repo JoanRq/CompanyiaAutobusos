@@ -80,7 +80,7 @@ public class Vista {
     }
   }
 
-  public void pedirConductor() {
+  public void altaConductor() {
     boolean var1 = true;
     while (var1) {
       System.out.println("\nLinia: " + this.controlador.conductors.keySet());
@@ -151,7 +151,7 @@ public class Vista {
         int var1 = Integer.parseInt(this.entrada.nextLine());
         switch (var1) {
           case 1:
-            this.pedirConductor();
+            this.altaConductor();
             break;
           case 2:
             this.altaLinies();
