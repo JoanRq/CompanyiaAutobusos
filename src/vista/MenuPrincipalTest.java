@@ -25,6 +25,10 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
   private JTextField textField1;
 
   private JPanel menuPrincipal;
+  private JButton altaAutobusosButton;
+  private JTextField textField2;
+  private JTextField textField3;
+  private JTextField textField4;
   private Controlador controlador = new Controlador();
 
   public MenuPrincipalTest() {
@@ -76,7 +80,50 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
     bSortir.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
-        System.exit(0);
+        //System.exit(0);
+        System.out.println("sortim!!!");
+        setVisible(false); //you can't see me!
+        dispose(); //Destroy the JFrame object
+
+      }
+    });
+
+    altaAutobusosButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        try {
+
+          controlador.addautobus(textField2.getText(), Integer.parseInt("0" + textField3.getText().trim()), Integer.parseInt("0" + textField4.getText()));
+          showMessageDialog(MenuPrincipalTest.this, "Guardado correctamente" + textField2.getText());
+        } catch (Exception error) {
+          System.err.println("Paràmetres incorrectes");
+        }
+
+
+      }
+    });
+    textField2.addInputMethodListener(new InputMethodListener() {
+      @Override
+      public void inputMethodTextChanged(InputMethodEvent event) {
+
+      }
+
+      @Override
+      public void caretPositionChanged(InputMethodEvent event) {
+
+      }
+    });
+    bAltaConductor.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new DemanaLinea("Demanar Linia", controlador);
+      }
+    });
+    bAltaDeParades.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        //
+        new DemanaAutobusos("Demanar Autobusos", controlador);
       }
     });
   }
@@ -126,57 +173,90 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
     bAltaDeParades.setText("Alta de Parades");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 2;
+    gbc.gridy = 3;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(bAltaDeParades, gbc);
     bAltaDeParadaEnLinea = new JButton();
     bAltaDeParadaEnLinea.setText("Alta de ParadaEnLinea");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 3;
+    gbc.gridy = 4;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(bAltaDeParadaEnLinea, gbc);
     bAltaConductorVetera = new JButton();
     bAltaConductorVetera.setText("Alta ConductorVetera");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(bAltaConductorVetera, gbc);
     bAltaConductorAprenent = new JButton();
     bAltaConductorAprenent.setText("Alta ConductorAprenent");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(bAltaConductorAprenent, gbc);
     final JPanel spacer1 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.fill = GridBagConstraints.VERTICAL;
     menuPrincipal.add(spacer1, gbc);
     bSortir = new JButton();
     bSortir.setText("Sortir");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 7;
+    gbc.gridy = 8;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(bSortir, gbc);
     final JPanel spacer2 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(spacer2, gbc);
     textField1 = new JTextField();
-    textField1.setColumns(20);
+    textField1.setColumns(10);
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
     gbc.gridy = 1;
     gbc.anchor = GridBagConstraints.WEST;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(textField1, gbc);
+    altaAutobusosButton = new JButton();
+    altaAutobusosButton.setText("Alta Autobusos");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(altaAutobusosButton, gbc);
+    textField2 = new JTextField();
+    textField2.setColumns(10);
+    textField2.setText("");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(textField2, gbc);
+    textField3 = new JTextField();
+    textField3.setColumns(10);
+    textField3.setText("");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(textField3, gbc);
+    textField4 = new JTextField();
+    textField4.setColumns(10);
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(textField4, gbc);
   }
 
   /**

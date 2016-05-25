@@ -34,9 +34,9 @@ public class VistaX extends JFrame implements ActionListener {
     add(boton);
     boton.addActionListener(this);
 
+    c = new Controlador();
     setVisible(true);
 
-    c = new Controlador();
   }
 
   public static void main(String[] args) {

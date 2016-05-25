@@ -19,17 +19,20 @@ public class Controlador {
   public HashMap<String, Autobus> llistaAutobusos = new HashMap();
 
 
-  public void addAutoBus(String matricula, int places, int numLinia)
+  public void addautobus(String matricula, int places, int numLinia)
       throws Exception {
     Linia linia = this.numLinines.get(numLinia);
     if (linia == null ){
       throw new Exception();
+
     }
     Autobus b1 = this.llistaAutobusos.get(matricula);
     if (b1 != null ) {
+      System.out.println("Autobus Repetit: "+this.llistaAutobusos.keySet());
       throw new Exception();
     }
     this.llistaAutobusos.put(matricula, new Autobus(matricula,places,linia));
+    System.out.println("Autobus Afegit: "+this.llistaAutobusos.keySet());
   }
 
   public void addConductor(String dni, String nombre) throws Exception {
