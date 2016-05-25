@@ -1,7 +1,6 @@
 package vista;
 
-
-import controlador.GestioBus;
+import controlador.Controlador;
 
 import java.util.Scanner;
 
@@ -9,18 +8,17 @@ import java.util.Scanner;
  * Created by poo2 on 17/05/2016.
  */
 public class Vista {
-  private GestioBus gestioBus = new GestioBus();
+  private Controlador controlador = new Controlador();
   private Scanner entrada;
 
   public Vista() {
-
     this.entrada = new Scanner(System.in);
   }
 
   public void altaParada() {
     boolean var1 = true;
     while (var1) {
-      System.out.println("Parada: "+this.gestioBus.llistaParades.keySet());
+      System.out.println("Parada: "+this.controlador.llistaParades.keySet());
 
       System.out.print("Nom de Parada (INTRO per sortir) : ");
       String var2 = this.entrada.nextLine().trim();
@@ -29,7 +27,7 @@ public class Vista {
       }
       else {
         try {
-          this.gestioBus.addParada(var2);
+          this.controlador.addParada(var2);
         }
         catch (Exception error ) {
           System.err.println("Paràmetres incorrectes");
@@ -43,7 +41,7 @@ public class Vista {
 
     boolean var1 = true;
     while (var1) {
-      System.out.println("ParadaEnLinea: "+this.gestioBus.llistaParadesEnLinea.keySet());
+      System.out.println("ParadaEnLinea: "+this.controlador.llistaParadesEnLinea.keySet());
 
       System.out.print("Introduïu ParadaEnLinea (INTRO per sortir)    : ");
       String var2 = this.entrada.nextLine().trim();
@@ -55,7 +53,7 @@ public class Vista {
         var1=false;
       }
       try {
-        this.gestioBus.addParadaEnLinea(var2, var3);
+        this.controlador.addParadaEnLinea(var2, var3);
 
       } catch (Exception error ) {
         System.err.println("Paràmetres incorrectes");
@@ -66,7 +64,7 @@ public class Vista {
   public void altaLinies() {
     boolean var1 = true;
     while (var1) {
-      System.out.println("Linia: "+this.gestioBus.numLinines.keySet());
+      System.out.println("Linia: "+this.controlador.numLinines.keySet());
       System.out.print("Introduïu numero de Linia (0 per Sortir : ");
       int var2 = Integer.parseInt("0"+this.entrada.nextLine().trim());
       if (var2==0 ) {
@@ -74,7 +72,7 @@ public class Vista {
       }
       else {
         try {
-          this.gestioBus.addLinia(var2);
+          this.controlador.addLinia(var2);
         } catch (Exception error ) {
           System.err.println("Paràmetres incorrectes");
         }
@@ -82,10 +80,10 @@ public class Vista {
     }
   }
 
-  public void pedirConductor() {
+  public void altaConductor() {
     boolean var1 = true;
     while (var1) {
-      System.out.println("\nLinia: " + this.gestioBus.conductors.keySet());
+      System.out.println("\nLinia: " + this.controlador.conductors.keySet());
       System.out.print("Introduce un nombre del Conductor (Intro per sortir) : ");
       String var2 = this.entrada.nextLine();
       System.out.print("Introduce su DNI                  (Intro per sortir) : ");
@@ -95,7 +93,7 @@ public class Vista {
       }
       else {
         try {
-          this.gestioBus.addConductor(var3, var2);
+          this.controlador.addConductor(var3, var2);
         } catch (Exception var5) {
           System.err.println("Los parametros no son correctos");
         }
@@ -113,7 +111,7 @@ public class Vista {
         System.out.print("Introduïu numero de Linia Vetada: ");
         int var4 = Integer.parseInt(this.entrada.nextLine());
 
-        this.gestioBus.addCondVetera(var2, var3, var4);
+        this.controlador.addCondVetera(var2, var3, var4);
         var1 = false;
       } catch (Exception var5) {
         System.err.println("Los parametros no son correctos");
@@ -129,7 +127,7 @@ public class Vista {
         System.out.print("Introduïu DNI                   : ");
         String var3 = this.entrada.nextLine();
 
-        this.gestioBus.addCondAprenent(var2, var3);
+        this.controlador.addCondAprenent(var2, var3);
         var1 = false;
       } catch (Exception var5) {
         System.err.println("Los parametros no son correctos");
@@ -150,13 +148,10 @@ public class Vista {
         System.out.println("0. Salir");
         System.out.println();
         System.out.print("Introduce una opcion: ");
-
-        //int var1 = Integer.parseInt(this.entrada.nextLine());
         int var1 = Integer.parseInt(this.entrada.nextLine());
-
         switch (var1) {
           case 1:
-            this.pedirConductor();
+            this.altaConductor();
             break;
           case 2:
             this.altaLinies();
@@ -190,5 +185,4 @@ public class Vista {
     Vista vis = new Vista();
     vis.Menu();
   }
-
 }

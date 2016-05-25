@@ -10,7 +10,7 @@ public class Assignades {
   private Linia lineas;
 
   public Assignades(float horas, ConductorAprenent conductorPracticas,
-                   Linia linea) throws Exception {
+      Linia linea) throws Exception {
     if ( conductorPracticas == null || linea == null){
       throw new NullPointerException();
     }

@@ -4,18 +4,19 @@ import modelo.*;
 
 import java.util.HashMap;
 
+
 /**
  * Created by poo2 on 17/05/2016.
  */
-public class GestioBus {
+public class Controlador {
 
-  public HashMap<String, Conductor> conductors                  = new HashMap();
-  public HashMap<String, ConductorVetera> conductorsVeterans    = new HashMap();
+  public HashMap<String, Conductor> conductors = new HashMap();
+  public HashMap<String, ConductorVetera> conductorsVeterans = new HashMap();
   public HashMap<String, ConductorAprenent> conductorsAprenents = new HashMap();
-  public HashMap<Integer, Linia> numLinines                     = new HashMap();
-  public HashMap<String, ParadaEnLinia>llistaParadesEnLinea     = new HashMap();
-  public HashMap<String, Parada>llistaParades                   = new HashMap();
-  public HashMap<String, AutoBus>llistaautobusos                = new HashMap();
+  public HashMap<Integer, Linia> numLinines = new HashMap();
+  public HashMap<String, ParadaEnLinia> llistaParadesEnLinea = new HashMap();
+  public HashMap<String, Parada> llistaParades = new HashMap();
+  public HashMap<String, Autobus> llistaAutobusos = new HashMap();
 
 
   public void addAutoBus(String matricula, int places, int numLinia)
@@ -24,19 +25,18 @@ public class GestioBus {
     if (linia == null ){
       throw new Exception();
     }
-    AutoBus b1 = this.llistaautobusos.get(matricula);
+    Autobus b1 = this.llistaAutobusos.get(matricula);
     if (b1 != null ) {
       throw new Exception();
     }
-    this.llistaautobusos.put(matricula, new AutoBus(matricula,places,linia));
+    this.llistaAutobusos.put(matricula, new Autobus(matricula,places,linia));
   }
 
   public void addConductor(String dni, String nombre) throws Exception {
     Conductor resultat = this.conductors.putIfAbsent(dni, new Conductor(dni, nombre));
     if (resultat!=null){
-      System.out.println("Conductor DUPLICAT!!!");
+      throw new Exception(); //System.out.println("Conductor DUPLICAT!!!");
     }
-
   }
 
   public void addCondVetera(String dni, String nombre, int LiniaVetada) throws Exception {
