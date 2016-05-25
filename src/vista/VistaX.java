@@ -5,7 +5,7 @@ package vista;
  */
 import static javax.swing.JOptionPane.showMessageDialog;
 
-import controlador.GestioBus;
+import controlador.Controlador;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 
 public class VistaX extends JFrame implements ActionListener {
   private JTextField texto;
-  GestioBus c;
+  Controlador c;
 
   public VistaX() {
     super("LA aplicación de autobuses");
@@ -36,7 +36,7 @@ public class VistaX extends JFrame implements ActionListener {
 
     setVisible(true);
 
-    c = new GestioBus();
+    c = new Controlador();
   }
 
   public static void main(String[] args) {

@@ -64,7 +64,6 @@ public class Vista {
   public void altaLinies() {
     boolean var1 = true;
     while (var1) {
-      System.out.println("Linia: "+this.controlador.numLinines.keySet());
       System.out.print("Introduïu numero de Linia (0 per Sortir : ");
       int var2 = Integer.parseInt("0"+this.entrada.nextLine().trim());
       if (var2==0 ) {

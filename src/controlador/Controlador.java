@@ -63,11 +63,12 @@ public class Controlador {
  *    Si ja existeix o si el Value associat a Key estava associat a null
  *    retornarà null, si no retornara Value
  */
-
     if (this.numLinines.putIfAbsent(numLinina, new Linia(numLinina)) != null) {
       // si no es null vol dir que ja el tenim per tant es un error
+      System.out.println("Linia Repetida: "+this.numLinines.keySet());
       throw new Exception();
     }
+    System.out.println("Linia: "+this.numLinines.keySet());
   }
 
   public void addParada(String nomParada) throws Exception {
