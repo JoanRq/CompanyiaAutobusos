@@ -35,6 +35,8 @@ public class Controlador {
     System.out.println("Autobus Afegit: "+this.llistaAutobusos.keySet());
   }
 
+
+
   public void addConductor(String dni, String nombre) throws Exception {
     Conductor resultat = this.conductors.putIfAbsent(dni, new Conductor(dni, nombre));
     if (resultat!=null){

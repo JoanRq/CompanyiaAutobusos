@@ -126,6 +126,12 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
         new DemanaAutobusos("Demanar Autobusos", controlador);
       }
     });
+    bAltaDeParadaEnLinea.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new DemanaAutobusCombo("Demanar Autobusos", controlador);
+      }
+    });
   }
 
   public static void main(String[] args) {
