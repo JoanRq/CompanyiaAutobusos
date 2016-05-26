@@ -38,8 +38,9 @@ public class DemanaLinea extends JFrame implements ActionListener {
       public void actionPerformed(ActionEvent e) {
         //desar
         try {
-          ctrl.addLinia(Integer.parseInt("0" + numLinia.getText().trim()));
+          ctrl.addLinia(Integer.parseInt(numLinia.getText().trim()));
           showMessageDialog(null, "Guardado correctamente" + numLinia.getText());
+          numLinia.setText("");
         } catch (Exception error) {
           System.err.println("Paràmetres incorrectes");
         }

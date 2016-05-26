@@ -1,8 +1,5 @@
 package vista;
 
-/**
- * Created by poo2 on 24/05/2016.
- */
 import static javax.swing.JOptionPane.showMessageDialog;
 
 import controlador.Controlador;

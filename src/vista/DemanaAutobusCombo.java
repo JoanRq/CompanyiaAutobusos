@@ -4,17 +4,20 @@ import controlador.Controlador;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import static java.util.Arrays.sort;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  * Created by poo2 on 26/05/2016.
  */
-public class DemanaAutobusCombo extends JFrame {
+public class DemanaAutobusCombo extends JFrame implements ActionListener {
   private JButton desarButton;
   private JButton sortirButton;
   private JTextField matriculaAutobus;
@@ -33,25 +36,61 @@ public class DemanaAutobusCombo extends JFrame {
 
 
     ctrl = c;
+    Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
+    Arrays.sort(keys);
+
     setContentPane(demanaAutobusosCombo);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     pack();
     setLocationRelativeTo(null);
 
-    DefaultComboBoxModel dcbm = new DefaultComboBoxModel(ctrl.numLinines.keySet().toArray());
+    desarButton.addActionListener(this);
+    sortirButton.addActionListener(this);
+
+//    DefaultComboBoxModel dcbm = new DefaultComboBoxModel(ctrl.numLinines.keySet().toArray());
+    DefaultComboBoxModel dcbm = new DefaultComboBoxModel(keys);
     dcbm.insertElementAt(" ", 0);
     dcbm.setSelectedItem(" ");
     cBLiniaDeBus.setModel(dcbm);
 
     setVisible(true);
-    cBLiniaDeBus.addItemListener(new ItemListener() {
-      @Override
-      public void itemStateChanged(ItemEvent itemEvent) {
-        if (itemEvent.getStateChange()==ItemEvent.SELECTED) {
-          System.out.println("ESCOLLIM LINEA: "+itemEvent.getItem());
-        }
+
+  }
+
+
+  public void actionPerformed(ActionEvent e) {
+
+    String botoApretat;
+    System.out.println("Adeu" + e);
+    try {
+      botoApretat = e.getActionCommand().trim();
+    } catch (Exception error) {
+      botoApretat = "sortirButton";
+      showMessageDialog(this, "Error al introducir datos");
+    }
+
+    if (botoApretat.equals("sortirButton")) {
+      System.out.println("Sortim!!!");
+      setVisible(false); //you can't see me!
+      dispose(); //Destroy the JFrame object
+
+    } else if (botoApretat.equals("desarButton")) {
+      System.out.println("DESEM: " + matriculaAutobus.getText() + ", " + numeroDePlaces.getText() + ", " + cBLiniaDeBus.getSelectedItem());
+      try {
+        ctrl.addautobus(matriculaAutobus.getText().trim(),
+            Integer.parseInt("0" + numeroDePlaces.getText().trim()),
+            Integer.parseInt("" + cBLiniaDeBus.getSelectedItem()));
+        showMessageDialog(null, "Guardado correctamente");
+        matriculaAutobus.setText("");
+        numeroDePlaces.setText("");
+        cBLiniaDeBus.setSelectedItem(" ");
+      } catch (Exception error) {
+        System.err.println("Paràmetres incorrectes");
       }
-    });
+
+    }
+
+
   }
 
 
@@ -147,6 +186,7 @@ public class DemanaAutobusCombo extends JFrame {
     gbc.ipadx = 50;
     demanaAutobusosCombo.add(spacer8, gbc);
     desarButton = new JButton();
+    desarButton.setActionCommand("desarButton");
     desarButton.setText("Desar");
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
@@ -154,6 +194,7 @@ public class DemanaAutobusCombo extends JFrame {
     gbc.fill = GridBagConstraints.HORIZONTAL;
     demanaAutobusosCombo.add(desarButton, gbc);
     sortirButton = new JButton();
+    sortirButton.setActionCommand("sortirButton");
     sortirButton.setText("Sortir");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;

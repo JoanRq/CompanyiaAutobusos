@@ -15,6 +15,8 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * Created by joan on 24/05/2016.
  */
 public class MenuPrincipalTest extends JFrame implements ActionListener {
+  private JPanel menuPrincipal;
+
   private JButton bAltaConductor;
   private JButton bAltaDeLinies;
   private JButton bAltaDeParades;
@@ -22,17 +24,17 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
   private JButton bAltaConductorVetera;
   private JButton bAltaConductorAprenent;
   private JButton bSortir;
-  private JTextField textField1;
-
-  private JPanel menuPrincipal;
   private JButton altaAutobusosButton;
+
+  private JTextField textField1;
   private JTextField textField2;
   private JTextField textField3;
   private JTextField textField4;
+
   private Controlador controlador = new Controlador();
 
   public MenuPrincipalTest() {
-    super("Aplicación de autobuses");
+
 
     setContentPane(menuPrincipal);
 
@@ -135,6 +137,7 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
   }
 
   public static void main(String[] args) {
+
     MenuPrincipalTest marco = new MenuPrincipalTest();
   }
 

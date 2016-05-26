@@ -88,6 +88,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <actionCommand value="desarButton"/>
           <text value="Desar"/>
         </properties>
       </component>
@@ -97,6 +98,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <actionCommand value="sortirButton"/>
           <text value="Sortir"/>
         </properties>
       </component>
