@@ -4,7 +4,10 @@ import controlador.Controlador;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.Arrays;
+
+import static java.util.Arrays.sort;
 
 /**
  * Created by poo2 on 26/05/2016.
@@ -34,9 +37,12 @@ public class DemanaAutobusCombo extends JFrame {
     setLocationRelativeTo(null);
 
 
-    
+    // DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
+    // dcbm.addElement(" ");
+    // dcbm.addElement(ctrl.numLinines.keySet().toArray());
 
     DefaultComboBoxModel dcbm = new DefaultComboBoxModel(ctrl.numLinines.keySet().toArray());
+    dcbm.insertElementAt(" ", 0);
     cBLiniaDeBus.setModel(dcbm);
 
 
@@ -44,9 +50,7 @@ public class DemanaAutobusCombo extends JFrame {
 
 
     System.out.println("Llista de linies: " + ctrl.numLinines.keySet());
-    System.out.println("Llista de linies: " + ctrl.numLinines);
-
-
+    System.out.println("Llista de linies: " + ctrl.numLinines.keySet().toArray());
 
 
     setVisible(true);
