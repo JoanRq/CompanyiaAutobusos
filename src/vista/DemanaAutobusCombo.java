@@ -4,6 +4,8 @@ import controlador.Controlador;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -36,24 +38,20 @@ public class DemanaAutobusCombo extends JFrame {
     pack();
     setLocationRelativeTo(null);
 
-
-    // DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
-    // dcbm.addElement(" ");
-    // dcbm.addElement(ctrl.numLinines.keySet().toArray());
-
     DefaultComboBoxModel dcbm = new DefaultComboBoxModel(ctrl.numLinines.keySet().toArray());
     dcbm.insertElementAt(" ", 0);
+    dcbm.setSelectedItem(" ");
     cBLiniaDeBus.setModel(dcbm);
 
-
-    //cBLiniaDeBus.addItem(ctrl.numLinines.keySet());
-
-
-    System.out.println("Llista de linies: " + ctrl.numLinines.keySet());
-    System.out.println("Llista de linies: " + ctrl.numLinines.keySet().toArray());
-
-
     setVisible(true);
+    cBLiniaDeBus.addItemListener(new ItemListener() {
+      @Override
+      public void itemStateChanged(ItemEvent itemEvent) {
+        if (itemEvent.getStateChange()==ItemEvent.SELECTED) {
+          System.out.println("ESCOLLIM LINEA: "+itemEvent.getItem());
+        }
+      }
+    });
   }
 
 
