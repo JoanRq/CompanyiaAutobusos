@@ -92,21 +92,13 @@ public class MenuPrincipal extends JFrame implements ActionListener {
   private void $$$setupUI$$$() {
     menuPrincipal = new JPanel();
     menuPrincipal.setLayout(new GridBagLayout());
-    altaConductorsButton = new JButton();
-    altaConductorsButton.setActionCommand("altaConductorsButton");
-    altaConductorsButton.setText("Alta Conductors");
+    altaLiniesButton = new JButton();
+    altaLiniesButton.setActionCommand("altaLiniesButton");
+    altaLiniesButton.setText("Alta Linies");
     GridBagConstraints gbc;
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    menuPrincipal.add(altaConductorsButton, gbc);
-    altaLiniesButton = new JButton();
-    altaLiniesButton.setActionCommand("altaLiniesButton");
-    altaLiniesButton.setText("Alta Linies");
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 1;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(altaLiniesButton, gbc);
     altaAutobusosButton = new JButton();
@@ -137,6 +129,14 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     gbc.gridy = 3;
     gbc.fill = GridBagConstraints.VERTICAL;
     menuPrincipal.add(spacer2, gbc);
+    altaConductorsButton = new JButton();
+    altaConductorsButton.setActionCommand("altaConductorsButton");
+    altaConductorsButton.setText("Alta Conductors Veterans");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(altaConductorsButton, gbc);
   }
 
   /**
