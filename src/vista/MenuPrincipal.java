@@ -18,6 +18,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
   private JButton altaLiniesButton;
   private JButton altaAutobusosButton;
   private JButton sortirButton;
+  private JButton altaConductorsAprenentsButton;
 
   private Controlador controlador = new Controlador();
 
@@ -28,6 +29,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     setSize(300, 400);
     //pack();
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    altaConductorsAprenentsButton.addActionListener(this);
     altaConductorsButton.addActionListener(this);
     altaLiniesButton.addActionListener(this);
     altaAutobusosButton.addActionListener(this);
@@ -58,8 +60,11 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 
     } else if (botoApretat.equals("altaConductorsButton")) {
       System.out.println("Adeu" + e);
-      new DemanaCVetera("Demanar Autobusos", controlador);
+      new DemanaCVetera("Alta Conductor Veterà", controlador);
 
+    } else if (botoApretat.equals("altaConductorsAprenentsButton")) {
+      System.out.println("Adeu" + e);
+      new DemanaCAprenentTEST("Alta Conductor Aprenent", controlador);
 
     } else if (botoApretat.equals("altaLiniesButton")) {
       System.out.println("Adeu" + e);
@@ -106,7 +111,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     altaAutobusosButton.setText("Alta Autobusos");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 2;
+    gbc.gridy = 3;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(altaAutobusosButton, gbc);
     sortirButton = new JButton();
@@ -114,19 +119,19 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     sortirButton.setText("Sortir");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 4;
+    gbc.gridy = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(sortirButton, gbc);
     final JPanel spacer1 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 3;
+    gbc.gridy = 4;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(spacer1, gbc);
     final JPanel spacer2 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
-    gbc.gridy = 3;
+    gbc.gridy = 4;
     gbc.fill = GridBagConstraints.VERTICAL;
     menuPrincipal.add(spacer2, gbc);
     altaConductorsButton = new JButton();
@@ -134,9 +139,17 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     altaConductorsButton.setText("Alta Conductors Veterans");
     gbc = new GridBagConstraints();
     gbc.gridx = 0;
-    gbc.gridy = 1;
+    gbc.gridy = 2;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     menuPrincipal.add(altaConductorsButton, gbc);
+    altaConductorsAprenentsButton = new JButton();
+    altaConductorsAprenentsButton.setActionCommand("altaConductorsAprenentsButton");
+    altaConductorsAprenentsButton.setText("Alta Conductors Aprenents");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    menuPrincipal.add(altaConductorsAprenentsButton, gbc);
   }
 
   /**
