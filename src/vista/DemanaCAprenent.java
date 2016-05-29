@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 /**
  * Created by joan on 28/05/2016.
  */
@@ -64,6 +66,7 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     desarButton.addActionListener(this);
     sortirButton.addActionListener(this);
 
+
     jlst.addListSelectionListener(this);
 
     setVisible(true);
@@ -78,14 +81,48 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
   }
 
   public void actionPerformed(ActionEvent e) {
+    String botoApretat;
+    System.out.println("Adeu" + e);
+    try {
+      botoApretat = e.getActionCommand().trim();
+    } catch (Exception error) {
+      botoApretat = "sortirButton";
+      showMessageDialog(this, "Error al introducir datos");
+    }
 
+    if (botoApretat.equals("sortirButton")) {
+      System.out.println("Sortim!!!");
+      setVisible(false); //you can't see me!
+      dispose(); //Destroy the JFrame object
+
+    } else if (botoApretat.equals("desarButton")) {
+      System.out.println("DESEM: " + dni.getText() + ", " + nom.getText());
+      try {
+        ctrl.addCondAprenent(dni.getText().trim(),
+            nom.getText().trim());
+        showMessageDialog(null, "Guardado correctamente");
+        dni.setText("");
+        nom.setText("");
+        linies.setText("");
+      } catch (Exception error) {
+        System.err.println("Paràmetres incorrectes");
+      }
+
+    }
   }
 
   public void valueChanged(ListSelectionEvent le) {
     int idx;
-    if ((idx = jlst.getSelectedIndex()) != -1)
-      System.out.println("event " + le);
-      System.out.println("Seleccionat" + strKeys[idx]);
+    if ((idx = jlst.getSelectedIndex()) != -1) {
+      System.out.println("event " + le + " " + strKeys.length);
+      System.out.println("Estan sellectionat" + jlst.getSelectedValuesList());
+/*      for (int j = 0; j < strKeys.length; j++) {
+        System.out.println("idx " + j + " esta sellectionat" + jlst.getSelectedIndex());
+      }
+*/
+    }
+
+    System.out.println("Seleccionat" + strKeys[idx]);
   }
 
 
@@ -106,23 +143,9 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
   private void $$$setupUI$$$() {
     demanaCAprenent = new JPanel();
     demanaCAprenent.setLayout(new GridBagLayout());
-    lbDemanaCAprenent = new JLabel();
-    lbDemanaCAprenent.setText("Nom Conductor");
-    GridBagConstraints gbc;
-    gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 1;
-    gbc.anchor = GridBagConstraints.WEST;
-    demanaCAprenent.add(lbDemanaCAprenent, gbc);
-    lbDNI = new JLabel();
-    lbDNI.setText("DNI Conductor");
-    gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 2;
-    gbc.anchor = GridBagConstraints.WEST;
-    demanaCAprenent.add(lbDNI, gbc);
     lbLinesAssignades = new JLabel();
     lbLinesAssignades.setText("Linies Assignades");
+    GridBagConstraints gbc;
     gbc = new GridBagConstraints();
     gbc.gridx = 2;
     gbc.gridy = 3;
@@ -220,6 +243,7 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     gbc.ipady = 15;
     demanaCAprenent.add(spacer13, gbc);
     sortirButton = new JButton();
+    sortirButton.setActionCommand("sortirButton");
     sortirButton.setText("Sortir");
     gbc = new GridBagConstraints();
     gbc.gridx = 7;
@@ -227,26 +251,13 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     gbc.fill = GridBagConstraints.HORIZONTAL;
     demanaCAprenent.add(sortirButton, gbc);
     desarButton = new JButton();
+    desarButton.setActionCommand("desarButton");
     desarButton.setText("Desar");
     gbc = new GridBagConstraints();
     gbc.gridx = 6;
     gbc.gridy = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     demanaCAprenent.add(desarButton, gbc);
-    nom = new JTextField();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 1;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    demanaCAprenent.add(nom, gbc);
-    dni = new JTextField();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 4;
-    gbc.gridy = 2;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    demanaCAprenent.add(dni, gbc);
     linies = new JTextArea();
     linies.setEditable(false);
     linies.setEnabled(true);
@@ -278,7 +289,34 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     gbc.gridheight = 3;
     gbc.fill = GridBagConstraints.BOTH;
     demanaCAprenent.add(spLlistaLinies, gbc);
-
+    nom = new JTextField();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaCAprenent.add(nom, gbc);
+    dni = new JTextField();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 4;
+    gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaCAprenent.add(dni, gbc);
+    lbDemanaCAprenent = new JLabel();
+    lbDemanaCAprenent.setText("Nom Conductor");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    demanaCAprenent.add(lbDemanaCAprenent, gbc);
+    lbDNI = new JLabel();
+    lbDNI.setText("DNI Conductor");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    demanaCAprenent.add(lbDNI, gbc);
   }
 
   /**

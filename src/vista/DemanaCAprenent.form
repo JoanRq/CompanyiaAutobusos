@@ -2,29 +2,11 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.DemanaCAprenent">
   <grid id="27dc6" binding="demanaCAprenent" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="553" height="400"/>
+      <xy x="20" y="20" width="553" height="403"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="a5812" class="javax.swing.JLabel" binding="lbDemanaCAprenent">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Nom Conductor"/>
-        </properties>
-      </component>
-      <component id="553ae" class="javax.swing.JLabel" binding="lbDNI">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="DNI Conductor"/>
-        </properties>
-      </component>
       <component id="ef7da" class="javax.swing.JLabel" binding="lbLinesAssignades">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -118,6 +100,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <actionCommand value="sortirButton"/>
           <text value="Sortir"/>
         </properties>
       </component>
@@ -127,26 +110,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <actionCommand value="desarButton"/>
           <text value="Desar"/>
         </properties>
-      </component>
-      <component id="5c376" class="javax.swing.JTextField" binding="nom">
-        <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="46122" class="javax.swing.JTextField" binding="dni">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties/>
       </component>
       <component id="1500b" class="javax.swing.JTextArea" binding="linies">
         <constraints>
@@ -182,6 +148,42 @@
         <border type="none"/>
         <children/>
       </scrollpane>
+      <component id="5c376" class="javax.swing.JTextField" binding="nom">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="46122" class="javax.swing.JTextField" binding="dni">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="a5812" class="javax.swing.JLabel" binding="lbDemanaCAprenent">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Nom Conductor"/>
+        </properties>
+      </component>
+      <component id="553ae" class="javax.swing.JLabel" binding="lbDNI">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="DNI Conductor"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

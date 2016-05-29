@@ -126,7 +126,7 @@ public class Vista {
         System.out.print("Introduïu DNI                   : ");
         String var3 = this.entrada.nextLine();
 
-        this.controlador.addCondAprenent(var2, var3);
+        this.controlador.addCondAprenent(var3, var2);
         var1 = false;
       } catch (Exception var5) {
         System.err.println("Los parametros no son correctos");

@@ -50,12 +50,22 @@ public class Controlador {
     ConductorVetera cVetera = new ConductorVetera(dni, nombre);
     // li afegeixo la Linia Vetada (o noLinia)
     cVetera.setNoLinea(lVetada);
-    this.conductorsVeterans.put(dni, cVetera);
-
+    ConductorVetera resultat = this.conductorsVeterans.putIfAbsent(dni, cVetera);
+    if (resultat!=null){
+      System.out.println("Ja esta donat d'alta: "+this.conductorsVeterans.keySet());
+      throw new Exception(); //System.out.println("Conductor DUPLICAT!!!");
+    }
+    System.out.println("Conductors Veterans: "+this.conductorsVeterans.keySet());
   }
 
   public void addCondAprenent(String dni, String nombre) throws Exception {
-    this.conductorsAprenents.put(dni, new ConductorAprenent(dni, nombre));
+    ConductorAprenent resultat = this.conductorsAprenents.putIfAbsent(dni, new ConductorAprenent(dni, nombre));
+    if (resultat!=null){
+      System.out.println("Ja esta donat d'alta: "+this.conductorsAprenents.keySet());
+      throw new Exception(); //System.out.println("Conductor DUPLICAT!!!");
+    }
+    System.out.println("Conductors Veterans: "+this.conductorsAprenents.keySet());
+
   }
 
   public void addLinia(int numLinina) throws Exception {

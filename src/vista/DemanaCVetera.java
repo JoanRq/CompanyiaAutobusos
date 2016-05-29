@@ -75,11 +75,11 @@ public class DemanaCVetera extends JFrame implements ActionListener {
       dispose(); //Destroy the JFrame object
 
     } else if (botoApretat.equals("desarButton")) {
-      System.out.println("DESEM: " + dni.getText() + ", " + nomConductor.getText() + ", " + Integer.parseInt("0" + cBLiniaDeBus.getSelectedItem()));
+      System.out.println("DESEM: " + dni.getText() + ", " + nomConductor.getText() + ", " + Integer.parseInt(("0" + cBLiniaDeBus.getSelectedItem()).trim()));
       try {
         ctrl.addCondVetera(dni.getText().trim(),
             nomConductor.getText().trim(),
-            Integer.parseInt("0" + cBLiniaDeBus.getSelectedItem()));
+            Integer.parseInt(("0" + cBLiniaDeBus.getSelectedItem()).trim()));
         showMessageDialog(null, "Guardado correctamente");
         dni.setText("");
         nomConductor.setText("");
@@ -111,35 +111,14 @@ public class DemanaCVetera extends JFrame implements ActionListener {
   private void $$$setupUI$$$() {
     demanaCVetera = new JPanel();
     demanaCVetera.setLayout(new GridBagLayout());
-    lbDemanaCVetera = new JLabel();
-    lbDemanaCVetera.setText("Nom Conductor");
-    GridBagConstraints gbc;
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 1;
-    gbc.anchor = GridBagConstraints.WEST;
-    demanaCVetera.add(lbDemanaCVetera, gbc);
-    lbDNI = new JLabel();
-    lbDNI.setText("DNI Conductor");
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 2;
-    gbc.anchor = GridBagConstraints.WEST;
-    demanaCVetera.add(lbDNI, gbc);
     lbLineaVetada = new JLabel();
     lbLineaVetada.setText("Linia Vetada");
+    GridBagConstraints gbc;
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 3;
     gbc.anchor = GridBagConstraints.WEST;
     demanaCVetera.add(lbLineaVetada, gbc);
-    nomConductor = new JTextField();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 1;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    demanaCVetera.add(nomConductor, gbc);
     final JPanel spacer1 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
@@ -163,13 +142,6 @@ public class DemanaCVetera extends JFrame implements ActionListener {
     gbc.gridy = 5;
     gbc.fill = GridBagConstraints.HORIZONTAL;
     demanaCVetera.add(sortirButton, gbc);
-    dni = new JTextField();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 2;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    demanaCVetera.add(dni, gbc);
     final JPanel spacer2 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
@@ -261,6 +233,34 @@ public class DemanaCVetera extends JFrame implements ActionListener {
     gbc.fill = GridBagConstraints.VERTICAL;
     gbc.ipady = 20;
     demanaCVetera.add(spacer13, gbc);
+    lbDemanaCVetera = new JLabel();
+    lbDemanaCVetera.setText("Nom Conductor");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    demanaCVetera.add(lbDemanaCVetera, gbc);
+    lbDNI = new JLabel();
+    lbDNI.setText("DNI Conductor");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    demanaCVetera.add(lbDNI, gbc);
+    dni = new JTextField();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaCVetera.add(dni, gbc);
+    nomConductor = new JTextField();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaCVetera.add(nomConductor, gbc);
   }
 
   /**
