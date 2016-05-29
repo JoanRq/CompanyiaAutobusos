@@ -12,7 +12,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 /**
  * Created by poo2 on 25/05/2016.
  */
-public class DemanaLinea extends JFrame implements ActionListener {
+public class DemanaLinia extends JFrame implements ActionListener {
   private JPanel demanaLinea;
   private JTextField numLinia;
   private JButton desarButton;
@@ -20,7 +20,7 @@ public class DemanaLinea extends JFrame implements ActionListener {
 
   private Controlador ctrl;
 
-  public DemanaLinea(String nomMenu, Controlador c) {
+  public DemanaLinia(String nomMenu, Controlador c) {
     super(nomMenu);
 
     ctrl = c;
@@ -62,7 +62,7 @@ public class DemanaLinea extends JFrame implements ActionListener {
 
 
   public static void main(String[] args) {
-    DemanaLinea dLinea = new DemanaLinea("Demanar Línia", null);
+    DemanaLinia dLinea = new DemanaLinia("Demanar Línia", null);
 
   }
 

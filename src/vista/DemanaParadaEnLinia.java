@@ -6,26 +6,37 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  * Created by joan on 29/05/2016.
  */
-public class DemanaParada extends JFrame implements ActionListener {
-  private JTextField nomParada;
+public class DemanaParadaEnLinia extends JFrame implements ActionListener {
+  private JComboBox cbParada;
+  private JComboBox cbLinia;
   private JButton desarButton;
   private JButton sortirButton;
-  private JLabel lbNomParada;
-  private JPanel cpDemanaParada;
+  private JLabel lbParada;
+  private JLabel lbLinia;
+
+  private JPanel demanaParadaEnLinia;
 
   private Controlador ctrl;
 
-  public DemanaParada(String nomMenu, Controlador c)  {
+  public DemanaParadaEnLinia(String nomMenu, Controlador c) {
     super(nomMenu);
-
     ctrl = c;
-    setContentPane(cpDemanaParada);
+
+    Object[] keysL = (Object[]) ctrl.numLinines.keySet().toArray();
+    Arrays.sort(keysL);
+
+    Object[] keysP = (Object[]) ctrl.llistaParades.keySet().toArray();
+    Arrays.sort(keysP);
+
+
+    setContentPane(demanaParadaEnLinia);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     pack();
     setLocationRelativeTo(null);
@@ -33,17 +44,29 @@ public class DemanaParada extends JFrame implements ActionListener {
     desarButton.addActionListener(this);
     sortirButton.addActionListener(this);
 
+    DefaultComboBoxModel dcbmL = new DefaultComboBoxModel(keysL);
+    dcbmL.insertElementAt(" ", 0);
+    dcbmL.setSelectedItem(" ");
+    cbLinia.setModel(dcbmL);
+
+    DefaultComboBoxModel dcbmP = new DefaultComboBoxModel(keysP);
+    dcbmP.insertElementAt(" ", 0);
+    dcbmP.setSelectedItem(" ");
+    cbParada.setModel(dcbmP);
+
 
     setVisible(true);
+
   }
 
   public static void main(String[] args) {
     Controlador controlador = new Controlador();
-    DemanaParada dParada = new DemanaParada("Demanar Parada", controlador);
+    DemanaParadaEnLinia dPEnLinea = new DemanaParadaEnLinia("Demanar Parada En Linia", controlador);
+
 
   }
 
-  public void actionPerformed(ActionEvent e)  {
+  public void actionPerformed(ActionEvent e) {
     String botoApretat;
     System.out.println("Adeu" + e);
     try {
@@ -59,17 +82,19 @@ public class DemanaParada extends JFrame implements ActionListener {
       dispose(); //Destroy the JFrame object
 
     } else if (botoApretat.equals("desarButton")) {
-      System.out.println("DESEM PARADA: " + nomParada.getText());
+      System.out.println("DESEM: " + cbParada.getSelectedItem().toString() + ", " + Integer.parseInt(("0" + cbLinia.getSelectedItem()).trim()));
       try {
-        ctrl.addParada(nomParada.getText().trim());
+        ctrl.addParadaEnLinea(cbParada.getSelectedItem().toString(), Integer.parseInt(("0" + cbLinia.getSelectedItem()).trim()));
         showMessageDialog(null, "Guardado correctamente");
+        cbParada.setSelectedItem(" ");
+        cbLinia.setSelectedItem(" ");
       } catch (Exception error) {
-        showMessageDialog(null, "Error o Parada Duplicada");
+        showMessageDialog(null, "Paràmetres incorrectes");
         System.err.println("Paràmetres incorrectes");
       }
-      nomParada.setText("");
 
     }
+
   }
 
   {
@@ -87,123 +112,137 @@ public class DemanaParada extends JFrame implements ActionListener {
    * @noinspection ALL
    */
   private void $$$setupUI$$$() {
-    cpDemanaParada = new JPanel();
-    cpDemanaParada.setLayout(new GridBagLayout());
-    lbNomParada = new JLabel();
-    lbNomParada.setText("Nom de la Parada");
+    demanaParadaEnLinia = new JPanel();
+    demanaParadaEnLinia.setLayout(new GridBagLayout());
+    lbParada = new JLabel();
+    lbParada.setText("Nom Parada");
     GridBagConstraints gbc;
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 1;
     gbc.anchor = GridBagConstraints.WEST;
-    cpDemanaParada.add(lbNomParada, gbc);
-    nomParada = new JTextField();
-    nomParada.setText("");
+    demanaParadaEnLinia.add(lbParada, gbc);
+    lbLinia = new JLabel();
+    lbLinia.setText("Linia en Parada");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    demanaParadaEnLinia.add(lbLinia, gbc);
+    cbParada = new JComboBox();
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
     gbc.gridy = 1;
     gbc.gridwidth = 2;
     gbc.anchor = GridBagConstraints.WEST;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    cpDemanaParada.add(nomParada, gbc);
-    sortirButton = new JButton();
-    sortirButton.setActionCommand("sortirButton");
-    sortirButton.setText("Sortir");
+    demanaParadaEnLinia.add(cbParada, gbc);
+    cbLinia = new JComboBox();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 2;
+    gbc.gridwidth = 2;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaParadaEnLinia.add(cbLinia, gbc);
+    final JPanel spacer1 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 3;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaParadaEnLinia.add(spacer1, gbc);
+    final JPanel spacer2 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 3;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.ipadx = 100;
+    demanaParadaEnLinia.add(spacer2, gbc);
+    final JPanel spacer3 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 3;
+    gbc.gridy = 3;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.ipadx = 50;
+    demanaParadaEnLinia.add(spacer3, gbc);
+    final JPanel spacer4 = new JPanel();
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
     gbc.gridy = 3;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    cpDemanaParada.add(sortirButton, gbc);
+    gbc.ipadx = 50;
+    demanaParadaEnLinia.add(spacer4, gbc);
+    final JPanel spacer5 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 0;
+    gbc.gridy = 3;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.ipadx = 50;
+    demanaParadaEnLinia.add(spacer5, gbc);
+    final JPanel spacer6 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 1;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipady = 15;
+    demanaParadaEnLinia.add(spacer6, gbc);
+    final JPanel spacer7 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 2;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipady = 15;
+    demanaParadaEnLinia.add(spacer7, gbc);
+    final JPanel spacer8 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 4;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipady = 15;
+    demanaParadaEnLinia.add(spacer8, gbc);
+    final JPanel spacer9 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 0;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipady = 50;
+    demanaParadaEnLinia.add(spacer9, gbc);
+    final JPanel spacer10 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 2;
+    gbc.gridy = 5;
+    gbc.fill = GridBagConstraints.VERTICAL;
+    gbc.ipady = 50;
+    demanaParadaEnLinia.add(spacer10, gbc);
+    final JPanel spacer11 = new JPanel();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 5;
+    gbc.gridy = 3;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.ipadx = 50;
+    demanaParadaEnLinia.add(spacer11, gbc);
     desarButton = new JButton();
     desarButton.setActionCommand("desarButton");
     desarButton.setText("Desar");
     gbc = new GridBagConstraints();
     gbc.gridx = 3;
-    gbc.gridy = 3;
+    gbc.gridy = 4;
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    cpDemanaParada.add(desarButton, gbc);
-    final JPanel spacer1 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 2;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    cpDemanaParada.add(spacer1, gbc);
-    final JPanel spacer2 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.ipadx = 100;
-    cpDemanaParada.add(spacer2, gbc);
-    final JPanel spacer3 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 3;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.ipadx = 50;
-    cpDemanaParada.add(spacer3, gbc);
-    final JPanel spacer4 = new JPanel();
+    demanaParadaEnLinia.add(desarButton, gbc);
+    sortirButton = new JButton();
+    sortirButton.setActionCommand("sortirButton");
+    sortirButton.setText("Sortir");
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.ipadx = 50;
-    cpDemanaParada.add(spacer4, gbc);
-    final JPanel spacer5 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 5;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.ipadx = 50;
-    cpDemanaParada.add(spacer5, gbc);
-    final JPanel spacer6 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 5;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.ipadx = 50;
-    cpDemanaParada.add(spacer6, gbc);
-    final JPanel spacer7 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 1;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipady = 15;
-    cpDemanaParada.add(spacer7, gbc);
-    final JPanel spacer8 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 3;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipady = 15;
-    cpDemanaParada.add(spacer8, gbc);
-    final JPanel spacer9 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
     gbc.gridy = 4;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipady = 50;
-    cpDemanaParada.add(spacer9, gbc);
-    final JPanel spacer10 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 2;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipady = 5;
-    cpDemanaParada.add(spacer10, gbc);
-    final JPanel spacer11 = new JPanel();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.fill = GridBagConstraints.VERTICAL;
-    gbc.ipady = 50;
-    cpDemanaParada.add(spacer11, gbc);
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    demanaParadaEnLinia.add(sortirButton, gbc);
   }
 
   /**
    * @noinspection ALL
    */
   public JComponent $$$getRootComponent$$$() {
-    return cpDemanaParada;
+    return demanaParadaEnLinia;
   }
 }

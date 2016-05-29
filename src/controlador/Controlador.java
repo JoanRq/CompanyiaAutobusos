@@ -91,7 +91,9 @@ public class Controlador {
     Parada resultat = this.llistaParades.putIfAbsent(nomParada, new Parada(nomParada));
     if (resultat!=null){
       System.out.println("La parada ja existeix i no s'ha modificat!!!");
+      throw new Exception();
     }
+    System.out.println("Parada: "+this.llistaParades.keySet());
 
   }
 
@@ -115,9 +117,11 @@ public class Controlador {
     }
 
     ParadaEnLinia pParadaEnLinia = new ParadaEnLinia(lParadaEnLinea, parada);
-    ParadaEnLinia resultat = this.llistaParadesEnLinea.put(nomParada+"|"+numLinina, pParadaEnLinia);
+    ParadaEnLinia resultat = this.llistaParadesEnLinea.putIfAbsent(nomParada+"|"+numLinina, pParadaEnLinia);
     if (resultat != null ){
-      System.out.println("ParadaEnLinea ja existeix i no s'ha modificat!!!");
+      System.out.println("ParadaEnLinea ja existeix i no s'ha modificat!!!\n"+this.llistaParadesEnLinea.keySet());
+      throw new Exception();
     }
+    System.out.println("ParadaEnLinea: "+this.llistaParadesEnLinea.keySet());
   }
 }

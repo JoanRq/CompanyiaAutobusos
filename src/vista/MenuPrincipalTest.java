@@ -118,7 +118,7 @@ public class MenuPrincipalTest extends JFrame implements ActionListener {
     bAltaConductor.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        new DemanaLinea("Demanar Linia", controlador);
+        new DemanaLinia("Demanar Linia", controlador);
       }
     });
     bAltaDeParades.addActionListener(new ActionListener() {
