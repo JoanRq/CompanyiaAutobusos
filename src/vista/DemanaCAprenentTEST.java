@@ -15,7 +15,6 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class DemanaCAprenentTEST extends JFrame implements ActionListener {
 
-  private DefaultListModel listModel;
   private JList list ;
 
   private JScrollPane sp;

@@ -64,7 +64,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 
     } else if (botoApretat.equals("altaConductorsAprenentsButton")) {
       System.out.println("Adeu" + e);
-      new DemanaCAprenentTEST("Alta Conductor Aprenent", controlador);
+      new DemanaCAprenent("Alta Conductor Aprenent", controlador);
 
     } else if (botoApretat.equals("altaLiniesButton")) {
       System.out.println("Adeu" + e);
