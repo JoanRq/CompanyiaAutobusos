@@ -146,7 +146,12 @@
         </constraints>
         <properties/>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="707e8" class="javax.swing.JList" binding="jlst">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
       </scrollpane>
       <component id="5c376" class="javax.swing.JTextField" binding="nom">
         <constraints>

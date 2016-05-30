@@ -29,10 +29,12 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
   private JPanel demanaCAprenent;
   private JScrollPane spLlistaLinies;
 
-  private JList jlst;     // Afegida a ma al interior de spLlistaLinies (JScrollPane)
+
+  private JList jlst;       // Afegida a ma al interior de spLlistaLinies (JScrollPane)
 
   private Controlador ctrl;
   private String[] strKeys;
+  private int[] liniesAssignades;
 
   public DemanaCAprenent(String nomMenu, Controlador c) {
     super(nomMenu); //impica posar extends JFrame
@@ -41,19 +43,18 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
     Arrays.sort(keys);
     strKeys = new String[keys.length];
+    // liniesAssignades = new int[4];
+    liniesAssignades = new int[]{1, 3, 5};
+
+
 /***
  *  He deduit que la forma mes senzilla era deixar la Llista que esta dins del spLlistaLinies
  *  amb un codi nostre fet a ma :-)
  */
-    jlst = new JList();
+    jlst = new JList(keys);
+    jlst.setSelectedIndices(liniesAssignades);
     jlst.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-    final DefaultListModel defaultListModel1 = new DefaultListModel();
-    int i = 0;
-    for (Object ob : keys) {
-      defaultListModel1.addElement(ob.toString());
-      strKeys[i++] = ob.toString();
-    }
-    jlst.setModel(defaultListModel1);
+
 
     spLlistaLinies.setViewportView(jlst);
     spLlistaLinies.setPreferredSize(new Dimension(45, 45));
@@ -114,8 +115,11 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
   public void valueChanged(ListSelectionEvent le) {
     int idx;
     if ((idx = jlst.getSelectedIndex()) != -1) {
-      System.out.println("event " + le + " " + strKeys.length);
-      System.out.println("Estan sellectionat" + jlst.getSelectedValuesList());
+      System.out.println("event " + le);
+      System.out.println("Items sellecionats " + jlst.getSelectedIndex());
+
+      System.out.println("llista Selleccionats" + jlst.getSelectedValuesList());
+      System.out.println("Estem selectionat" + jlst.getSelectedValue());
 /*      for (int j = 0; j < strKeys.length; j++) {
         System.out.println("idx " + j + " esta sellectionat" + jlst.getSelectedIndex());
       }
@@ -289,6 +293,8 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     gbc.gridheight = 3;
     gbc.fill = GridBagConstraints.BOTH;
     demanaCAprenent.add(spLlistaLinies, gbc);
+    jlst = new JList();
+    spLlistaLinies.setViewportView(jlst);
     nom = new JTextField();
     gbc = new GridBagConstraints();
     gbc.gridx = 4;
