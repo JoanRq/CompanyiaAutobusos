@@ -2,7 +2,10 @@ package controlador;
 
 import modelo.*;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 /**
@@ -89,6 +92,38 @@ public class Controlador {
   public Integer[] llistarLinies(){
     return numLinines.keySet().toArray(new Integer[0]);
   }
+
+  public void desarLiniesTxt() {
+    Integer numDeLinies[] = llistarLinies();
+    System.out.println("Estem desant Arxiu");
+    PrintWriter pw;
+    try {
+      pw = new PrintWriter(new File("data/datos_linies.txt"));
+
+      for (int lin : numDeLinies)
+        pw.println(lin);
+
+      pw.close();
+    } catch (Exception e1) {
+      System.out.println("Error desant Arxiu" + e1);
+    }
+
+  }
+
+  public void llegirLiniesTxt() {
+    try {
+      Scanner s = new Scanner(new File("data/datos_linies.txt"));
+      String linea;
+      while (s.hasNextLine()) {
+        linea = s.nextLine();
+        System.out.println(linea);
+        addLinia(Integer.parseInt(linea));
+      }
+    } catch (Exception e1) {
+      System.err.println("Error llegint Arxiu " + e1);
+    }
+  }
+
 
   public void addParada(String nomParada) throws Exception {
     // si es un numero vàlid afegeix la parada
