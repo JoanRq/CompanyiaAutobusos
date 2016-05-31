@@ -36,7 +36,8 @@ public class DemanaAutobusCombo extends JFrame implements ActionListener {
 
 
     ctrl = c;
-    Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
+    //Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
+    Integer[] keys = ctrl.listarLineas();
     Arrays.sort(keys);
 
     setContentPane(demanaAutobusosCombo);

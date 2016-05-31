@@ -86,6 +86,10 @@ public class Controlador {
     System.out.println("Linia: "+this.numLinines.keySet());
   }
 
+  public Integer[] listarLineas(){
+    return numLinines.keySet().toArray(new Integer[0]);
+  }
+
   public void addParada(String nomParada) throws Exception {
     // si es un numero vàlid afegeix la parada
     Parada resultat = this.llistaParades.putIfAbsent(nomParada, new Parada(nomParada));
