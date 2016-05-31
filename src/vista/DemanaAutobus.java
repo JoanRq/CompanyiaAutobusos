@@ -14,7 +14,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 /**
  * Created by poo2 on 26/05/2016.
  */
-public class DemanaAutobusCombo extends JFrame implements ActionListener {
+public class DemanaAutobus extends JFrame implements ActionListener {
   private JButton desarButton;
   private JButton sortirButton;
   private JTextField matriculaAutobus;
@@ -28,12 +28,11 @@ public class DemanaAutobusCombo extends JFrame implements ActionListener {
 
   private Controlador ctrl;
 
-  public DemanaAutobusCombo(String nomMenu, Controlador c) {
+  public DemanaAutobus(String nomMenu, Controlador c) {
     super(nomMenu);
 
 
     ctrl = c;
-    //Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
     Integer[] keys = ctrl.llistarLinies();
     Arrays.sort(keys);
 

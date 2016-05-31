@@ -42,15 +42,11 @@ public class DemanaCAprenent extends JFrame implements ActionListener, ListSelec
     ctrl = c;
     Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
     Arrays.sort(keys);
+
     strKeys = new String[keys.length];
-    // liniesAssignades = new int[4];
-    liniesAssignades = new int[]{1, 3, 5};
+    liniesAssignades = new int[4];
+    // liniesAssignades = new int[]{1, 3, 5};
 
-
-/***
- *  He deduit que la forma mes senzilla era deixar la Llista que esta dins del spLlistaLinies
- *  amb un codi nostre fet a ma :-)
- */
     jlst = new JList(keys);
     jlst.setSelectedIndices(liniesAssignades);
     jlst.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

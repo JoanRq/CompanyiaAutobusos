@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.Scanner;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -84,7 +81,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     } else if (botoApretat.equals("altaAutobusosButton")) {
       System.out.println("Adeu" + e);
       //new DemanaAutobusos("Demanar Autobusos", controlador);
-      new DemanaAutobusCombo("Demanar Autobusos", controlador);
+      new DemanaAutobus("Demanar Autobusos", controlador);
 
     } else if (botoApretat.equals("altaParadesButton")) {
       System.out.println("Adeu" + e);
