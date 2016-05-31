@@ -27,7 +27,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 
   public MenuPrincipal() {
     super("Aplicación de autobuses");
-    controlador.llegirLiniesTxt();
+//    controlador.llegirLiniesTxt();
+    controlador.llegirLiniesJson();
 
     setContentPane(menuPrincipal);
     setSize(300, 400);
@@ -61,7 +62,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     }
 
     if (botoApretat.equals("sortirButton")) {
-      controlador.desarLiniesTxt();
+//      controlador.desarLiniesTxt();
+      controlador.desarLiniesJson();
       System.out.println("Sortim!!!");
       setVisible(false); //you can't see me!
       dispose(); //Destroy the JFrame object
@@ -88,7 +90,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
       new DemanaParada("Alta de  Parades", controlador);
 
     } else if (botoApretat.equals("desarLiniesButton")) {
-      controlador.desarLiniesTxt();
+      controlador.desarLiniesJson();
       System.out.println("Desem Linies");
 
     } else if (botoApretat.equals("altaParadaEnLiniaButton")) {

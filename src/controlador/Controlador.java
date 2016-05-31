@@ -1,6 +1,15 @@
 package controlador;
 
-import modelo.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import modelo.Conductor;
+import modelo.ConductorVetera;
+import modelo.ConductorAprenent;
+import modelo.Linia;
+import modelo.ParadaEnLinia;
+import modelo.Parada;
+import modelo.Autobus;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -20,7 +29,6 @@ public class Controlador {
   public HashMap<String, ParadaEnLinia> llistaParadesEnLinea = new HashMap();
   public HashMap<String, Parada> llistaParades = new HashMap();
   public HashMap<String, Autobus> llistaAutobusos = new HashMap();
-
 
   public void addautobus(String matricula, int places, int numLinia)
       throws Exception {
@@ -107,7 +115,6 @@ public class Controlador {
     } catch (Exception e1) {
       System.out.println("Error desant Arxiu" + e1);
     }
-
   }
 
   public void llegirLiniesTxt() {
@@ -117,13 +124,47 @@ public class Controlador {
       while (s.hasNextLine()) {
         linea = s.nextLine();
         System.out.println(linea);
-        addLinia(Integer.parseInt(linea));
+        addLinia(Integer.parseInt(linea));        // el problema es que no desem l'objecte
       }
     } catch (Exception e1) {
       System.err.println("Error llegint Arxiu " + e1);
     }
   }
 
+  public void desarLiniesJson() {
+    Gson gson = new Gson();
+    System.out.println("Estem desant Arxiu");
+    PrintWriter pwJson;
+    try {
+      pwJson = new PrintWriter(new File("data/datos_linies.json"));
+//      pwJson.println(gson.toJson(numLinines));   descarto utilitzar això per desconeixement del proces invers
+      for (int lin : numLinines.keySet())
+        pwJson.println(gson.toJson(numLinines.get(lin)));     // aqui si que desem l'objecte
+
+      pwJson.close();
+    } catch (Exception e1) {
+      System.out.println("Error desant Arxiu" + e1);
+    }
+  }
+
+  public void llegirLiniesJson() {
+    //Gson gson = new Gson();
+    Gson gson = new GsonBuilder().create();
+    Linia liniaTMP;
+    try {
+      Scanner s = new Scanner(new File("data/datos_linies.json"));
+      String linea;
+      while (s.hasNextLine()) {
+        linea = s.nextLine();
+        liniaTMP=gson.fromJson(linea, Linia.class);
+        System.out.println(liniaTMP.getNumLinia()+":"+linea);
+        numLinines.put(liniaTMP.getNumLinia(),liniaTMP);
+      }
+
+    } catch (Exception e1) {
+      System.err.println("Error llegint Arxiu " + e1);
+    }
+  }
 
   public void addParada(String nomParada) throws Exception {
     // si es un numero vàlid afegeix la parada

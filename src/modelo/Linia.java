@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Linia {
   // Atributs
-  private int numLinina;
+  private int numLinia;
 
   //normalizacion UML
   private ArrayList<Assignades> assignacions;
@@ -15,12 +15,12 @@ public class Linia {
   private ArrayList<Autobus> autobusos;
   private ArrayList<ParadaEnLinia> parades;
 
-  public Linia(int numLinina) throws Exception {
-    if (numLinina < 0 ) {
+  public Linia(int numLinia) throws Exception {
+    if (numLinia < 0 ) {
       throw new Exception();
     }
 
-    this.numLinina = numLinina;
+    this.numLinia = numLinia;
 
     assignacions = new ArrayList<>();
     conductorsVeterans = new ArrayList<>();
@@ -34,6 +34,9 @@ public class Linia {
       throw new Exception();
     }
     this.autobusos.add(bus);
+  }
+  public int getNumLinia(){
+    return numLinia;
   }
 
 }
