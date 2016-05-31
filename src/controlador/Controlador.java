@@ -86,7 +86,7 @@ public class Controlador {
     System.out.println("Linia: "+this.numLinines.keySet());
   }
 
-  public Integer[] listarLineas(){
+  public Integer[] llistarLinies(){
     return numLinines.keySet().toArray(new Integer[0]);
   }
 

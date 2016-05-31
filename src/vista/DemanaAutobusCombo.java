@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import static java.util.Arrays.sort;
@@ -37,7 +34,7 @@ public class DemanaAutobusCombo extends JFrame implements ActionListener {
 
     ctrl = c;
     //Object[] keys = (Object[]) ctrl.numLinines.keySet().toArray();
-    Integer[] keys = ctrl.listarLineas();
+    Integer[] keys = ctrl.llistarLinies();
     Arrays.sort(keys);
 
     setContentPane(demanaAutobusosCombo);
