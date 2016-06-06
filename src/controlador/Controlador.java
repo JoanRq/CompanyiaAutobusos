@@ -2,7 +2,7 @@ package controlador;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
+
 import modelo.Conductor;
 import modelo.ConductorVetera;
 import modelo.ConductorAprenent;
@@ -13,6 +13,10 @@ import modelo.Autobus;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -131,13 +135,20 @@ public class Controlador {
     }
   }
 
+
   public void desarLiniesJson() {
-    Gson gson = new Gson();
+    /**
+     * Per exportar-ho tot a Json podriem fer servir
+     * pwJson.println(gson.toJson(numLinines));
+     * pero desconec com fer el pas invers, per tant ho fare registre a registre
+     */
+
+//    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().create();
     System.out.println("Estem desant Arxiu");
     PrintWriter pwJson;
     try {
       pwJson = new PrintWriter(new File("data/datos_linies.json"));
-//      pwJson.println(gson.toJson(numLinines));   descarto utilitzar això per desconeixement del proces invers
       for (int lin : numLinines.keySet())
         pwJson.println(gson.toJson(numLinines.get(lin)));     // aqui si que desem l'objecte
 
@@ -146,6 +157,62 @@ public class Controlador {
       System.out.println("Error desant Arxiu" + e1);
     }
   }
+
+  public void desarLiniesMySql() {
+    /**
+     * Per exportar-ho tot a Json podriem fer servir
+     * pwJson.println(gson.toJson(numLinines));
+     * pero desconec com fer el pas invers, per tant ho fare registre a registre
+     */
+
+    Connection conn = null;
+    try {
+      conn = DriverManager.getConnection(
+          "jdbc:mysql://localhost/personas?useSSL=false&serverTimezone=CET",
+          "root",
+          "");
+      String consultaSql="INSERT IGNORE INTO linea VALUES "; // ('3401BCW', 55, 3)";
+      for (int lin : numLinines.keySet())
+        consultaSql+=" ("+lin+"),";
+      consultaSql=consultaSql.substring(0,consultaSql.length()-1);
+      Statement sentencia= conn.createStatement();
+
+      sentencia.execute(consultaSql);
+      System.out.println("Consulta executada");
+
+      sentencia.close();
+      conn.close();
+
+    } catch (Exception e) {
+      System.out.print("ERROR"+e);
+    }
+
+
+
+    Gson gson = new GsonBuilder().create();
+    System.out.println("Estem desant Arxiu");
+    PrintWriter pwJson;
+    try {
+      pwJson = new PrintWriter(new File("data/datos_linies.json"));
+      for (int lin : numLinines.keySet())
+        pwJson.println(gson.toJson(numLinines.get(lin)));     // aqui si que desem l'objecte
+
+      pwJson.close();
+    } catch (Exception e1) {
+      System.out.println("Error desant Arxiu" + e1);
+    }
+  }
+
+
+
+  /**
+   * Type tipoLinea = new TypeToken<HashMap<Integer, Linea>>(){}.getType();
+   *
+   * Linea liniaTMP =gson.fromJson(linea, tipoLinea);
+   * Type tipo
+   * HashMap<Integer, Linea> hs2 = gson.fromJson(linea, tipoHashMap);
+   *
+   */
 
   public void llegirLiniesJson() {
     //Gson gson = new Gson();
@@ -156,6 +223,10 @@ public class Controlador {
       String linea;
       while (s.hasNextLine()) {
         linea = s.nextLine();
+/**
+ * Type tipoLinea = new TypeToken<Persona>(){}.getType
+ * Linea liniaTMP=gson.fromJson(linea, tipoLinea);
+ */
         liniaTMP=gson.fromJson(linea, Linia.class);
         System.out.println(liniaTMP.getNumLinia()+":"+linea);
         numLinines.put(liniaTMP.getNumLinia(),liniaTMP);
@@ -165,6 +236,88 @@ public class Controlador {
       System.err.println("Error llegint Arxiu " + e1);
     }
   }
+
+  public void llegirLiniesMySQL() {
+    Linia liniaTMP;
+    Connection conn = null;
+    try {
+
+      conn = DriverManager.getConnection(
+          "jdbc:mysql://localhost/personas?useSSL=false&serverTimezone=CET",
+          "root",
+          "");
+      String consultaSql="SELECT * FROM autobus";
+      Statement sentencia= conn.createStatement();
+
+      ResultSet rs = sentencia.executeQuery(consultaSql);
+      System.out.println("Consulta executada");
+
+      // PAS 3: ITEREM SOBRE LA BDD
+      while (rs.next()) {
+        int linea = rs.getInt("linea");
+        addLinia(linea);
+      }
+      rs.close();
+      sentencia.close();
+      conn.close();
+
+    } catch (Exception e1) {
+      System.err.println("Error llegint Arxiu " + e1);
+    }
+  }
+
+
+
+  /**
+   *
+   public void desarLiniesJson() {
+   /**
+   * Per exportar-ho tot a Json podriem fer servir
+   * pwJson.println(gson.toJson(numLinines));
+   * pero desconec com fer el pas invers, per tant ho fare registre a registre
+
+//    Gson gson = new Gson();
+  Gson gson = new GsonBuilder().create();
+  System.out.println("Estem desant Arxiu");
+  PrintWriter pwJson;
+  try {
+    pwJson = new PrintWriter(new File("data/datos_linies.json"));
+    for (int lin : numLinines.keySet())
+      pwJson.println(gson.toJson(numLinines.get(lin)));     // aqui si que desem l'objecte
+
+    pwJson.close();
+  } catch (Exception e1) {
+    System.out.println("Error desant Arxiu" + e1);
+  }
+}
+
+  public void llegirLiniesJson() {
+    //Gson gson = new Gson();
+    Gson gson = new GsonBuilder().create();
+    Linia liniaTMP;
+    try {
+      Scanner s = new Scanner(new File("data/datos_linies.json"));
+      String linea;
+      while (s.hasNextLine()) {
+        linea = s.nextLine();
+/**
+ * Type tipoLinea = new TypaToken<Persona>(){}.getType
+ * Linea liniaTMP=gson.fromJson(linea, tipoLinea);
+        liniaTMP=gson.fromJson(linea, Linia.class);
+        System.out.println(liniaTMP.getNumLinia()+":"+linea);
+        numLinines.put(liniaTMP.getNumLinia(),liniaTMP);
+      }
+
+    } catch (Exception e1) {
+      System.err.println("Error llegint Arxiu " + e1);
+    }
+  }
+   *
+   *
+   */
+
+
+
 
   public void addParada(String nomParada) throws Exception {
     // si es un numero vàlid afegeix la parada
