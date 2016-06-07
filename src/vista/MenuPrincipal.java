@@ -28,7 +28,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     super("Aplicación de autobuses");
 //    controlador.llegirLiniesTxt();
 //    controlador.llegirLiniesJson();
-    controlador.llegirLiniesMySQL();
+    controlador.llegirLiniesMysql();
 
     setContentPane(menuPrincipal);
     setSize(300, 400);

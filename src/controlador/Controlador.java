@@ -237,7 +237,7 @@ public class Controlador {
     }
   }
 
-  public void llegirLiniesMySQL() {
+  public void llegirLiniesMysql() {
     Linia liniaTMP;
     Connection conn = null;
     try {
